@@ -1,0 +1,106 @@
+const CleanCSS = require("clean-css");
+const { minify } = require("terser");
+const markdownIt = require("markdown-it");
+const Image = require("@11ty/eleventy-img");
+
+async function imageShortcode(src, alt, sizes) {
+    let metadata = await Image(src, {
+        outputDir: "./dist/img/",
+        urlPath: "/img/",
+        widths: [600, 1200, 1800],
+        formats: ["webp", "jpeg"]
+    });
+  
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    };
+  
+    // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+    return Image.generateHTML(metadata, imageAttributes);
+}
+
+
+module.exports = function (eleventyConfig) {
+
+    // https://www.11ty.dev/docs/data-deep-merge/
+    eleventyConfig.setDataDeepMerge(true);
+
+    // Passthrough copy
+    //eleventyConfig.addPassthroughCopy('src/assets');
+
+    // Layout alias
+    eleventyConfig.addLayoutAlias('base', 'layouts/base.njk');
+    eleventyConfig.addLayoutAlias('index', 'layouts/index.njk');
+
+    // extract year from date
+    eleventyConfig.addFilter("yearFromDate", function (date) {
+        // convert airtable datestring to date object
+        dateObj = new Date(date);
+        const year = dateObj.getFullYear();
+        return year;
+    });
+    // extract timestamp from date 
+    eleventyConfig.addFilter("timestamp", function(date){
+        // convert airtable datestring to date object
+        dateObj = new Date(date);
+        const timestamp = dateObj.getTime();
+        return timestamp;
+    });
+
+
+    // CSS minify inline filter
+    eleventyConfig.addFilter("cssmin", function (code) {
+        return new CleanCSS({}).minify(code).styles;
+    });
+
+    // JS
+    // const { minify } = require("terser");
+    eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
+    code,
+    callback
+    ) {
+    try {
+        const minified = await minify(code);
+        callback(null, minified.code);
+    } catch (err) {
+        console.error("Terser error: ", err);
+        // Fail gracefully.
+        callback(null, code);
+    }
+    });
+
+    // markdown filter
+    // options: https://github.com/markdown-it/markdown-it#init-with-presets-and-options
+    const md = new markdownIt({
+        html: true,
+        breaks: true,
+    });
+    eleventyConfig.addFilter("markdown", (content) => {
+        return md.render(content);
+    });
+
+    eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+    eleventyConfig.addLiquidShortcode("image", imageShortcode);
+    eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+
+    return {
+        dir: {
+            input: "src",
+            includes: "_includes",
+            data: "_data",
+            output: "dist",
+        },
+        templateFormats: [
+            "njk",
+            "liquid",
+            "md",
+            "html"
+        ],
+        htmlTemplateEngine: "njk",
+        markdownTemplateEngine: "njk",
+        passthroughFileCopy: true
+    };
+};

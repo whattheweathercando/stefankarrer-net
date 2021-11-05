@@ -1,0 +1,29 @@
+---
+layout: base
+pagination:
+    data: all
+    size: 1
+    alias: item
+permalink: "/d/{{ item.slug }}/"
+---
+
+
+
+<h1 class="title">{{ item.title }}</h1>
+
+{% if item.lead %}
+    <div class="lead-text">{{ item.lead | markdown | safe }}</div>
+{% endif %} 
+
+{% if item.body %}
+    <div class="body-text">{{ item.body | markdown | safe }}</div>
+{% endif %} 
+
+{% if item.images %}
+    <div class="images-container">
+    {% for image in item.images %}
+        {% image image.url, item.title, "100vw" %}
+    {% endfor %}
+    </div>
+{% endif %}
+
