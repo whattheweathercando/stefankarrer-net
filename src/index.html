@@ -7,11 +7,11 @@ title: "stefankarrer.net"
     {% for item in all %}
     {% if item.website == true %}
         {% if item.title == "Now" %}
-            <li id="now" class="list-entry" data-id="{{ item.title | slug }}" data-timestamp="{{ item.startdate }}">
+            <li id="now" data-id="{{ item.title | slug }}" data-startdate="{{ item.startdate }}" data-enddate="{{ item.startdate | timestamp }}">
                 <h2>{{ item.date }}<span class="title-comma">&comma;&nbsp;</span></h2>
             </li>
         {% else %}
-            <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-type="{{ item.type}}" data-timestamp="{{ item.startdate | timestamp }}">
+            <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-type="{{ item.type}}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">
                 <h2 class="title-index">{{ item.title }}
                     <!-- <span class="title-comma">&comma;&nbsp;</span> -->
                 </h2>
