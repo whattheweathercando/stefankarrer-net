@@ -1,14 +1,20 @@
+(function() {
 
 
+var el = {};
 
-const listElements = document.querySelectorAll("li.list-entry");
+const listEntries = document.querySelectorAll(".list-entry");
+const listTitles = document.querySelectorAll("li h2");
+const expandButton = document.querySelector("#expand");
+// const collapseButton = document.querySelector("#collapse");
+const infoDivs = document.querySelectorAll(".info");
 
 
-// current date list item
 const nowEl = document.querySelector("#now");
 const dateEl = document.querySelector("#now h2");
 const interval = setInterval(upDate, 1000);
 
+// init current date list item
 let d = new Date();
 dateEl.innerHTML = d;
 // set data-timestamp to current d
@@ -23,27 +29,20 @@ function upDate() {
   dateEl.innerHTML = d
 }
 
-// 
-listElements.forEach(el => {
+// add time data attributes 
+listEntries.forEach(el => {
   let startDate = el.dataset.startdate;
   let endDate = el.dataset.enddate;
   if (startDate > nowTimestamp ){
-    el.dataset.tense = "future";
+    el.dataset.year = "future";
   } else if (endDate >= nowTimestamp && startDate <= nowTimestamp ) {
-    el.dataset.tense = "present";
+    el.dataset.year = "present";
   } 
   else if (endDate < nowTimestamp | startDate < nowTimestamp ) {
-    el.dataset.tense = "past";
+    el.dataset.year = "past";
   }
 })
 
-
-
-const listEntries = document.querySelectorAll(".list-entry");
-const listTitles = document.querySelectorAll("li h2");
-const expandButton = document.querySelector("#expand");
-const collapseButton = document.querySelector("#collapse");
-const infoDivs = document.querySelectorAll(".info");
 
 // show content on click
 listTitles.forEach(el => {
@@ -54,22 +53,31 @@ listTitles.forEach(el => {
 });
 
 // expand index list
+let expanded = false;
 expandButton.addEventListener('click', function(){
+  if (!expanded){
+    expanded = true
+    this.innerText = "Collapse"
+  } else {
+    expanded = false
+    this.innerText = "Expand"
+  }
+  
   infoDivs.forEach(el => {
-    el.classList.add("show");
+    el.classList.toggle("show");
   })
   listTitles.forEach(el => {
-    el.classList.add("active");
+    el.classList.toggle("active");
   })
 });
-collapseButton.addEventListener('click', function(){
-  infoDivs.forEach(el => {
-    el.classList.remove("show");
-  })
-  listTitles.forEach(el => {
-    el.classList.remove("active");
-  })
-});
+// collapseButton.addEventListener('click', function(){
+//   infoDivs.forEach(el => {
+//     el.classList.remove("show");
+//   })
+//   listTitles.forEach(el => {
+//     el.classList.remove("active");
+//   })
+// });
 
 // images full height on click
 const listImages = document.querySelectorAll("#list img");
@@ -78,155 +86,6 @@ listImages.forEach(el => {
     el.classList.toggle("full-height");
   });
 })
-
-
-// FILTER
-
-// filter by type 
-const events = document.querySelectorAll("li[data-type='event']")
-const works = document.querySelectorAll("li[data-type='work']")
-const futures = document.querySelectorAll("li[data-tense='future']")
-const presents = document.querySelectorAll("li[data-tense='present']")
-const pasts = document.querySelectorAll("li[data-tense='past']")
-
-const filterEventsButton = document.querySelector("#filter-events")
-const filterWorksButton = document.querySelector("#filter-works")
-const filterTypeAllButton = document.querySelector("#filter-type-all")
-const filterFutureButton = document.querySelector("#filter-future")
-const filterCurrentButton = document.querySelector("#filter-current")
-const filterPastButton = document.querySelector("#filter-past")
-const listViewButton = document.querySelector("#list-view")
-const paragraphViewButton = document.querySelector("#paragraph-view")
-
-const typeFilterEls = document.querySelectorAll(".type-filter");
-const timeFilterEls = document.querySelectorAll(".time-filter");
-
-let listView = true;
-
-let eventFilterActive = false;
-let workFilterActive = false;
-let futureFilterActive = false;
-let currentFilterActive = false;
-let pastFilterActive = false;
-
-
-// Filter
-// to do : 
-// cumulative type && time
-// toggle on/off, underline
-
-filterEventsButton.addEventListener("click", function(){
-  typeFilterEls.forEach(el => el.classList.remove("filter-active"));
-  if (workFilterActive){
-    workFilterActive = false;
-    listEntries.forEach(el => el.classList.remove("hide", "show"));
-  }
-  if (!eventFilterActive){
-    eventFilterActive = true;
-    this.classList.add("filter-active");
-    works.forEach(el => el.classList.add("hide"));
-    events.forEach(el => el.classList.add("show"));
-  } else {
-    eventFilterActive = false;
-    this.classList.remove("filter-active");
-    works.forEach(el => el.classList.remove("hide"));
-    events.forEach(el => el.classList.remove("show"));
-  }  
-})
-
-filterWorksButton.addEventListener("click", function(){
-  typeFilterEls.forEach(el => el.classList.remove("filter-active") );
-  if (eventFilterActive){
-    eventFilterActive = false;
-    listEntries.forEach(el => el.classList.remove("hide", "show"));
-  }
-  if (!workFilterActive){
-    workFilterActive = true;
-    this.classList.add("filter-active");
-    events.forEach(el => el.classList.add("hide"));
-    works.forEach(el => el.classList.add("show"));
-  } else {
-    workFilterActive = false;
-    this.classList.remove("filter-active");
-    events.forEach(el => el.classList.remove("hide"));
-    works.forEach(el => el.classList.remove("show"));
-  }  
-})
-// filterTypeAllButton.addEventListener("click", function() {
-//   listEntries.forEach(el => {
-//     if (listView == true ){
-//       el.style.display = "block";
-//     } else {
-//       el.style.display = "inline-block";
-//     }
-    
-//   })
-// })
-
-// Filter by date
-// future, current, past
-
-filterFutureButton.addEventListener("click", function(){
-  timeFilterEls.forEach(el => el.classList.remove("filter-active") );
-  currentFilterActive = false;
-  pastFilterActive = false;
-  listEntries.forEach(el => el.classList.remove("hide", "show"));
-  if (!futureFilterActive){
-    futureFilterActive = true;
-    this.classList.add("filter-active");
-    futures.forEach(el => el.classList.add("show"));
-    presents.forEach(el => el.classList.add("hide"));
-    pasts.forEach(el => el.classList.add("hide"));
-  } else {
-    futureFilterActive = false;
-    this.classList.remove("filter-active");
-    futures.forEach(el => el.classList.remove("show"));
-    presents.forEach(el => el.classList.remove("hide"));
-    pasts.forEach(el => el.classList.remove("hide"));
-  }  
-})
-
-filterCurrentButton.addEventListener("click", function(){
-  timeFilterEls.forEach(el => el.classList.remove("filter-active") );
-  futureFilterActive = false;
-  pastFilterActive = false;
-  listEntries.forEach(el => el.classList.remove("hide", "show"));
-  if (!currentFilterActive){
-    currentFilterActive = true;
-    this.classList.add("filter-active");
-    futures.forEach(el => el.classList.add("hide"));
-    presents.forEach(el => el.classList.add("show"));
-    pasts.forEach(el => el.classList.add("hide"));
-  } else {
-    currentFilterActive = false;
-    this.classList.remove("filter-active");
-    futures.forEach(el => el.classList.remove("hide"));
-    presents.forEach(el => el.classList.remove("show"));
-    pasts.forEach(el => el.classList.remove("hide"));
-  }  
-})
-filterPastButton.addEventListener("click", function(){
-  timeFilterEls.forEach(el => el.classList.remove("filter-active") );
-  // if (futureFilterActive){
-    futureFilterActive = false;
-    currentFilterActive = false;
-    listEntries.forEach(el => el.classList.remove("hide", "show"));
-  // }
-  if (!pastFilterActive){
-    pastFilterActive = true;
-    this.classList.add("filter-active");
-    futures.forEach(el => el.classList.add("hide"));
-    presents.forEach(el => el.classList.add("hide"));
-    pasts.forEach(el => el.classList.add("show"));
-  } else {
-    pastFilterActive = false;
-    this.classList.remove("filter-active");
-    futures.forEach(el => el.classList.remove("hide"));
-    presents.forEach(el => el.classList.remove("hide"));
-    pasts.forEach(el => el.classList.remove("show"));
-  }  
-})
-
 
 
 // oO text animation
@@ -242,3 +101,160 @@ function changeoO() {
   countoO < oO.length -1 ? countoO++ : countoO = 0;
 }
 setInterval(changeoO, 666); 
+
+
+
+
+// FILTER
+
+// https://jimfrenette.com/javascript/multi-filter-js/
+// https://jimfrenette.com/demo/multi-filter/
+
+// document loaded
+// https://jimfrenette.com/javascript/functions/#domcontentloaded-document-event-example
+
+
+function inRange(num, range) {
+  return (num >= range.split('-')[0] && num <= range.split('-')[1]);
+}
+
+function matches(key, value) {
+  var count = 0;
+  Array.from(el.items).forEach(item => {
+      switch(key) {
+          case 'make':
+              if (item.dataset.make === value) {
+                  count ++;
+              }
+              break;
+          case 'year':
+              if (item.dataset.year === value) {
+                  count ++;
+              }
+              break;
+      }
+  });
+  return count;
+}
+
+function match(item) {
+  var match = {
+      "make": [],
+      "year": []
+  };
+  Array.from(el.filtersList).forEach(input => {
+      if (input.checked) {
+      switch(input.name) {
+          case 'make':
+              match.make.push(item.dataset.make === input.value);
+              break;
+          case 'year':
+              match.year.push(item.dataset.year === input.value);
+              break;
+      }}
+  });
+  return match;
+}
+
+function renderCount(count) {
+  el.heading.innerHTML = `${count} Matches`;
+}
+
+function applyFilter() {
+  Array.from(el.items).forEach(item => {
+      var result = match(item),
+          matches = [];
+      item.classList.remove('selected');
+
+      // console.log(result);
+      if (result.make.length) {
+          if (result.make.includes(true)) {
+              matches.push(true);
+          } else { matches.push(false); }
+      }
+
+      if (result.year.length) {
+          if (result.year.includes(true)) {
+              matches.push(true);
+          } else { matches.push(false); }
+      }
+
+      var count = 0;
+      for(var i = 0; i < matches.length; ++i){
+          if(matches[i] == true)
+              count++;
+      }
+
+      if (matches.length && matches.length == count) {
+          item.classList.add('selected');
+      } else {
+          item.classList.remove('selected');
+      }
+  });
+
+  renderCount(el.list.querySelectorAll('.selected').length);
+}
+
+function isFilter() {
+  var filter = false;
+  /**
+   * some returns true as soon as any of the callbacks return true,
+   * short-circuiting the execution of the rest. e.g., break;
+   */
+  Array.from(el.filtersList).some(input => {
+      if (input.checked) {
+          filter = true;
+      }
+  });
+  return filter;
+}
+
+function onFilterChange(input) {
+  var filtered = false;
+  if (input.checked) {
+      filtered = true;
+  } else {
+      filtered = isFilter();
+  }
+
+  if (filtered) {
+      el.list.classList.add('filtered');
+      applyFilter();
+
+  } else {
+      el.list.classList.remove('filtered');
+      renderCount(el.items.length);
+  }
+}
+
+/**
+* This is the app entry point
+*/
+function onDocumentReady() {
+  el.heading = document.querySelector('.match-count');
+  el.filters = document.querySelector('.filters');
+  el.filtersList = el.filters.querySelectorAll('input');
+  el.list = document.querySelector('ul.cars');
+  el.items = el.list.querySelectorAll('li.list-entry');
+
+  renderCount(el.items.length);
+
+  Array.from(el.filtersList).forEach(input => {
+      // add match count to the label
+      input.parentNode.append(` (${matches(input.name, input.value)})`);
+
+      input.addEventListener('change', (event) => {
+          onFilterChange(event.target);
+      });
+  });
+
+}
+
+if (document.readyState !== "loading") {
+  onDocumentReady();
+} else {
+  document.addEventListener("DOMContentLoaded", onDocumentReady);
+}
+
+
+}());

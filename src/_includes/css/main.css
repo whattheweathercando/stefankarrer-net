@@ -57,7 +57,6 @@ main {
 }
 
 /* MARGINS */
-/* margin bottom */
 .title, .lead-text, .body-text, .back-home {
     margin: 0 0 var(--main-padding) 0;
     display: block;
@@ -70,6 +69,8 @@ img, audio {
     margin: var(--main-padding) 0;
 }
 
+
+
 .info {
     display: none;
 }
@@ -80,6 +81,16 @@ img, audio {
     display: none;
 }
 
+
+/* FILTER  */
+.cars.filtered li:not(.selected) {
+    display: none;
+}
+
+/* LIST ENTRIES */
+/* li {
+    padding: 0.125rem 0;
+} */
 li:not(#now) {
     cursor: pointer;
 }
@@ -93,10 +104,11 @@ li:not(#now) {
 #now {
     cursor: auto;
     color: gray;
-    /* border-top: solid 1px purple;
-    border-bottom: solid 1px purple;
-    background-color: purple; */
+    display: block !important;
+    /* border-top: solid 1px purple; */
 }
+/* current last 
+border-bottom: solid 1px purple; */
 
 #oo {
     min-width: 3rem;
