@@ -1,6 +1,5 @@
 (function() {
 
-
 var el = {};
 
 const listEntries = document.querySelectorAll(".list-entry");
@@ -17,7 +16,7 @@ const interval = setInterval(upDate, 1000);
 // init current date list item
 let d = new Date();
 dateEl.innerHTML = d;
-// set data-timestamp to current d
+// set data-timestamp to current date
 let nowTimestamp = d.valueOf();
 //console.log(nowTimestamp);
 nowEl.dataset.startdate = nowTimestamp;

@@ -7,7 +7,7 @@
 	</main>
     {% include "partials/footer.njk" %}
     {% set js %}
-        {% include "js/main.js" %}
+        {% include "js/index.js" %}
     {% endset %}
     <script defer>
         {{ js | jsmin | safe }}
