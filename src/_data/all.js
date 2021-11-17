@@ -17,6 +17,7 @@ module.exports = () => {
             records.forEach((record) => {
               allDatasets.push({
                 title: record.get('title'),
+                location: record.get('location'),
                 startdate: record.get('startdate'),
                 enddate: record.get('enddate'),
                 externallink: record.get('external-link'),

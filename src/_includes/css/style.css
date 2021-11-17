@@ -44,6 +44,10 @@ footer {
     bottom: 0;
     width: 100vw;
     padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
+    font-size: var(--font-size-small);
+}
+footer div {
+    display: inline;
 }
 footer span {
     cursor: pointer;
@@ -51,6 +55,7 @@ footer span {
 footer span:hover {
     text-decoration: underline;
 }
+
 main {
     min-height: 100vh;
     margin: var(--main-margin);
@@ -70,7 +75,6 @@ main {
 img, audio {
     margin: var(--main-padding) 0;
 }
-
 
 
 .info {

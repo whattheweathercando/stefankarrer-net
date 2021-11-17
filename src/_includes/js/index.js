@@ -56,10 +56,10 @@ let expanded = false;
 expandButton.addEventListener('click', function(){
   if (!expanded){
     expanded = true
-    this.innerText = "Collapse"
+    this.innerText = "Collapse all"
   } else {
     expanded = false
-    this.innerText = "Expand"
+    this.innerText = "Expand all"
   }
   
   infoDivs.forEach(el => {

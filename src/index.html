@@ -7,13 +7,13 @@ title: "index page stefankarrer.net"
     {% for item in all %}
     {% if item.website == true %}
         {% if item.title == "Now" %}
-            <li id="now" data-id="{{ item.title | slug }}" data-startdate="{{ item.startdate }}" data-enddate="{{ item.startdate | timestamp }}">
+            <li id="now" data-id="{{ item.title | slug }}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{{ item.startdate | timestamp }}">
                 <h2>{{ item.date }}<span class="title-comma">&comma;&nbsp;</span></h2>
             </li>
         {% else %}
             <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-make="{{ item.type}}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">
-                <h2 class="title-index">{{ item.title }}
-                    <!-- <span class="title-comma">&comma;&nbsp;</span> -->
+                <h2 class="title-index">
+                    {{ item.title }}{% if item.location %}<span class="title-comma">&comma;&nbsp;</span>{{ item.location }}{% endif %}
                 </h2>
                 <div class="info"> 
                     <!-- {% if item.startdate %}
