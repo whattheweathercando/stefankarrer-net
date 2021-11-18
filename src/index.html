@@ -3,7 +3,7 @@ layout: index
 title: "index page stefankarrer.net"
 ---
 
-<ul id="list" class="cars">
+<ul id="list">
     {% for item in all %}
     {% if item.website == true %}
         {% if item.title == "Now" %}
@@ -12,7 +12,7 @@ title: "index page stefankarrer.net"
                 <div class="info"></div>
             </li>
         {% else %}
-            <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-make="{{ item.type}}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">
+            <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-type="{{ item.type}}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">
                 <h2 class="title-index">
                     {{ item.title }}{% if item.location %}<span class="title-comma">&comma;&nbsp;</span>{{ item.location }}{% endif %}
                 </h2>

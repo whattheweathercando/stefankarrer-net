@@ -33,12 +33,12 @@ listEntries.forEach(el => {
   let startDate = el.dataset.startdate;
   let endDate = el.dataset.enddate;
   if (startDate > nowTimestamp ){
-    el.dataset.year = "future";
+    el.dataset.tense = "future";
   } else if (endDate >= nowTimestamp && startDate <= nowTimestamp ) {
-    el.dataset.year = "present";
+    el.dataset.tense = "present";
   } 
   else if (endDate < nowTimestamp | startDate < nowTimestamp ) {
-    el.dataset.year = "past";
+    el.dataset.tense = "past";
   }
 })
 
@@ -74,14 +74,7 @@ expandButton.addEventListener('click', function(){
     })
   }
 });
-// collapseButton.addEventListener('click', function(){
-//   infoDivs.forEach(el => {
-//     el.classList.remove("show");
-//   })
-//   listTitles.forEach(el => {
-//     el.classList.remove("active");
-//   })
-// });
+
 
 // images full height on click
 const listImages = document.querySelectorAll("#list img");
@@ -126,13 +119,13 @@ function matches(key, value) {
   var count = 0;
   Array.from(el.items).forEach(item => {
       switch(key) {
-          case 'make':
-              if (item.dataset.make === value) {
+          case 'type':
+              if (item.dataset.type === value) {
                   count ++;
               }
               break;
-          case 'year':
-              if (item.dataset.year === value) {
+          case 'tense':
+              if (item.dataset.tense === value) {
                   count ++;
               }
               break;
@@ -143,17 +136,17 @@ function matches(key, value) {
 
 function match(item) {
   var match = {
-      "make": [],
-      "year": []
+      "type": [],
+      "tense": []
   };
   Array.from(el.filtersList).forEach(input => {
       if (input.checked) {
       switch(input.name) {
-          case 'make':
-              match.make.push(item.dataset.make === input.value);
+          case 'type':
+              match.type.push(item.dataset.type === input.value);
               break;
-          case 'year':
-              match.year.push(item.dataset.year === input.value);
+          case 'tense':
+              match.tense.push(item.dataset.tense === input.value);
               break;
       }}
   });
@@ -171,14 +164,14 @@ function applyFilter() {
       item.classList.remove('selected');
 
       // console.log(result);
-      if (result.make.length) {
-          if (result.make.includes(true)) {
+      if (result.type.length) {
+          if (result.type.includes(true)) {
               matches.push(true);
           } else { matches.push(false); }
       }
 
-      if (result.year.length) {
-          if (result.year.includes(true)) {
+      if (result.tense.length) {
+          if (result.tense.includes(true)) {
               matches.push(true);
           } else { matches.push(false); }
       }
@@ -238,7 +231,7 @@ function onDocumentReady() {
   el.heading = document.querySelector('.match-count');
   el.filters = document.querySelector('.filters');
   el.filtersList = el.filters.querySelectorAll('input');
-  el.list = document.querySelector('ul.cars');
+  el.list = document.querySelector('ul#list');
   el.items = el.list.querySelectorAll('li.list-entry');
 
   renderCount(el.items.length);
@@ -249,6 +242,7 @@ function onDocumentReady() {
 
       input.addEventListener('change', (event) => {
           onFilterChange(event.target);
+          event.target.parentNode.classList.toggle("filter-active"); // move to onFilterChange function ?
       });
   });
 

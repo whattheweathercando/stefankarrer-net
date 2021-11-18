@@ -1,8 +1,8 @@
 {
   "name": "stefankarrer-net",
-  "version": "1.0.0",
+  "version": "",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "clean": "rm -rf ./dist/*",
     "start": "npx @11ty/eleventy --serve --watch",

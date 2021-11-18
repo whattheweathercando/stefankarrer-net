@@ -47,15 +47,11 @@ footer {
     padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
     font-size: var(--font-size-small);
 }
+/* ?? footer -> display : grid */
 footer div {
     display: inline;
 }
-footer span {
-    cursor: pointer;
-}
-footer span:hover {
-    text-decoration: underline;
-}
+
 
 main {
     min-height: 100vh;
@@ -90,7 +86,7 @@ img, audio {
 
 
 /* FILTER  */
-.cars.filtered li:not(.selected) {
+#list.filtered li:not(.selected) {
     display: none;
 }
 
@@ -155,12 +151,14 @@ button, label {
     /* border: 1px solid #ccc; */
 }
 label input {
-    /* display: none; */
+    display: none;
 }
 button:hover, label:hover {
     cursor: pointer;
-    text-decoration: underline;
-    background-color: rgb(34, 34, 34);
+    /* text-decoration: underline;
+    background-color: rgb(34, 34, 34); */
+    color: var(--color-dark-highlight);
+    
 }
 
 img {
