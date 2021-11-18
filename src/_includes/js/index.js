@@ -51,23 +51,28 @@ listTitles.forEach(el => {
 		})
 });
 
-// expand index list
+// expand / collapse index list
 let expanded = false;
 expandButton.addEventListener('click', function(){
   if (!expanded){
     expanded = true
     this.innerText = "Collapse all"
+    infoDivs.forEach(el => {
+      el.classList.add("show");
+    })
+    listTitles.forEach(el => {
+      el.classList.add("active");
+    })
   } else {
     expanded = false
     this.innerText = "Expand all"
+    infoDivs.forEach(el => {
+      el.classList.remove("show");
+    })
+    listTitles.forEach(el => {
+      el.classList.remove("active");
+    })
   }
-  
-  infoDivs.forEach(el => {
-    el.classList.toggle("show");
-  })
-  listTitles.forEach(el => {
-    el.classList.toggle("active");
-  })
 });
 // collapseButton.addEventListener('click', function(){
 //   infoDivs.forEach(el => {

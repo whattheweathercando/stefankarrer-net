@@ -9,6 +9,7 @@ title: "index page stefankarrer.net"
         {% if item.title == "Now" %}
             <li id="now" data-id="{{ item.title | slug }}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{{ item.startdate | timestamp }}">
                 <h2>{{ item.date }}<span class="title-comma">&comma;&nbsp;</span></h2>
+                <div class="info"></div>
             </li>
         {% else %}
             <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-make="{{ item.type}}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">

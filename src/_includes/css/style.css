@@ -1,10 +1,11 @@
 
 /* CSS Variables */
 :root {
-    --main-color: #000000;
-    --main-bg-color: #ffffff;
-    --main-color-dark: #f0f0f0;
-    --main-bg-color-dark: #0f0f0f;
+    --main-color: rgb(30, 30, 30);
+    --main-bg-color: #dadada;
+    --main-color-dark: #dadada;
+    --main-bg-color-dark: rgb(30, 30, 30);
+    --color-dark-highlight: white;
     /* --font-size-base: 16px; */
     --font-size-base: 1.4vw;
     --font-size-small: 0.75rem;
@@ -28,7 +29,7 @@ html {
 }
 
 body {
-    font-family: var(--font-family-monospace);
+    font-family: var(--font-family-system);
 }
 body, footer {
     color: var(--main-color-dark);
@@ -94,18 +95,20 @@ img, audio {
 }
 
 /* LIST ENTRIES */
-/* li {
-    padding: 0.125rem 0;
-} */
+li {
+    padding: 0.0625rem 0;
+}
 li:not(#now) {
     cursor: pointer;
 }
 /* .list-entry {} */
 .list-entry:not(#now) h2:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: var(--color-dark-highlight);
 }
 .active:not(#now > h2), .filter-active {
     text-decoration: underline;
+    color: var(--color-dark-highlight);
 }
 #now {
     cursor: auto;
