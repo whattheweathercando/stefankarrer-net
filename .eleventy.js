@@ -76,7 +76,7 @@ module.exports = function (eleventyConfig) {
     // options: https://github.com/markdown-it/markdown-it#init-with-presets-and-options
     const md = new markdownIt({
         html: true,
-        breaks: true,
+        breaks: false,
     });
     eleventyConfig.addFilter("markdown", (content) => {
         return md.render(content);

@@ -18,6 +18,11 @@
     --main-margin: 4rem;
     --body-max-width: 1440px;
 }
+@media screen and (max-width: 1280px) {
+    :root {
+        --font-size-base: 18px;
+    }
+}
 @media screen and (max-width: 768px) {
     :root {
         --main-margin: 0;
@@ -59,24 +64,26 @@ main {
     padding: var(--main-padding);
 }
 
+
+
+.info {
+    display: none;
+}
+.info, .info-subpage {
+    margin: var(--main-padding) 0 2rem 0;
+    font-size: var(--font-size-small);
+}
+
 /* MARGINS */
 .title, .lead-text, .body-text, .back-home {
     margin: 0 0 var(--main-padding) 0;
     display: block;
-}
-.info {
-    margin: var(--main-padding) 0 2rem 0;
-    font-size: var(--font-size-small);
 }
 /* margins top, bottom */
 img, audio {
     margin: var(--main-padding) 0;
 }
 
-
-.info {
-    display: none;
-}
 .show {
     display: block;
 }
@@ -150,6 +157,10 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+.external-link, .internal-link {
+    display: inline-block;
+    margin-top: 1em;
 }
 
 button, label {

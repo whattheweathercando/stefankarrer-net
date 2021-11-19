@@ -9,14 +9,15 @@ permalink: "/d/{{ item.slug }}/"
 {# permalink: "/d/{{ item.title | slug }}/" #}
 
 
-<h1 class="title">{{ item.title }}</h1>
-
-{% if item.lead %}
-    <div class="lead-text">{{ item.lead | markdown | safe }}</div>
-{% endif %} 
+ <div class="info-subpage">
+    <h1 class="title">{{ item.title }}{% if item.location %}, {{ item.location }}{% endif %}</h1>
+    {% if item.lead %}
+        <div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>
+    {% endif %}
+</div>
 
 {% if item.body %}
-    <div class="body-text">{{ item.body | markdown | safe }}</div>
+    <div class="body-text">{{ item.body | nl2br | markdown | safe }}</div>
 {% endif %} 
 
 {% if item.images %}
@@ -26,4 +27,3 @@ permalink: "/d/{{ item.slug }}/"
     {% endfor %}
     </div>
 {% endif %}
-
