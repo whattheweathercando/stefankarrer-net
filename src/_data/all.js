@@ -11,6 +11,7 @@ module.exports = () => {
       base('Documentation') 
         .select({ 
             view: 'Grid All' 
+            // view: 'Grid Website' 
         })
         .eachPage(
           function page(records, fetchNextPage) {

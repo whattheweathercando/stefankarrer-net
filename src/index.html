@@ -22,7 +22,6 @@ title: "index page stefankarrer.net"
                     {% endif %} -->
                     {% if item.lead %}
                         <div>{{ item.lead | nl2br | markdown | safe }}</div>
-                        <!-- <div>{{ item.lead | nl2br | markdown | safe }}</div> -->
                     {% endif %} 
                     {% if item.externallink %}
                     <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
@@ -38,7 +37,6 @@ title: "index page stefankarrer.net"
                     {% if item.images %}
                         {% set featuredImage = item.images[0] %}
                         {% image featuredImage.url, item.title, "100vw" %}
-                        <!-- <img src="{{ thumb.url }}" loading="lazy" alt="{{ item.title }}"> -->
                     {% endif %}
                 </div>
             </li>
