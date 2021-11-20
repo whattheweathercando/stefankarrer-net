@@ -1,11 +1,6 @@
 
 /* CSS Variables */
 :root {
-    --main-color: rgb(30, 30, 30);
-    --main-bg-color: #dadada;
-    --main-color-dark: #dadada;
-    --main-bg-color-dark: rgb(30, 30, 30);
-    --color-dark-highlight: white;
     /* --font-size-base: 16px; */
     --font-size-base: 1.4vw;
     --font-size-small: 0.75rem;
@@ -29,17 +24,42 @@
     }
 }
 
+
+body {   
+    --text-color: #121212;
+    --bg-color: #eeeeee;
+    --color-highlight: black;
+}
+body.dark-mode {
+    --text-color: #dadada;
+    --bg-color: #121212;
+    --color-highlight: white;
+}
+@media (prefers-color-scheme: dark) {
+    /* defaults to dark theme */
+    body {
+        --text-color: #dadada;
+        --bg-color: rgb(30, 30, 30);
+        --color-highlight: white;
+    }
+    body.light-mode {
+        --text-color: rgb(30, 30, 30);
+        --bg-color: #dadada;
+        --color-highlight: black;
+    }
+}
+
 html {
     font-size: var(--font-size-base);
 }
-
 body {
     font-family: var(--font-family-system);
+    color: var(--text-color);
+    background-color: var(--bg-color); 
 }
-body, footer {
-    color: var(--main-color-dark);
-    background-color: var(--main-bg-color-dark);
-}
+
+
+
 main, footer, header {
     max-width: var(--body-max-width);
 }
@@ -50,6 +70,7 @@ footer {
     bottom: 0;
     width: 100vw;
     padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
+    background-color: inherit;
     font-size: var(--font-size-small);
 }
 /* ?? footer -> display : grid */
@@ -113,15 +134,8 @@ li:not(#now) {
     display: none;
 }
 
-/* .list-entry {} */
-.list-entry:not(#now) h2:hover {
-    /* text-decoration: underline; */
-    color: var(--color-dark-highlight);
-}
-.active:not(#now > h2), .filter-active {
-    text-decoration: underline;
-    color: var(--color-dark-highlight);
-}
+
+
 #now {
     cursor: auto;
     color: gray;
@@ -135,7 +149,6 @@ li:not(#now) {
 
 
 
-/* BASIC STYLES  */
 
 h1, h2 {
     /* font-size: var(--font-size-large); */
@@ -155,9 +168,6 @@ a {
     text-decoration: none;
     color: inherit;
 }
-a:hover {
-    text-decoration: underline;
-}
 .external-link, .internal-link {
     display: inline-block;
     margin-top: 1em;
@@ -173,13 +183,27 @@ button, label {
 label input {
     display: none;
 }
+
+/* HOVER styles */
+a:hover {
+    color: var(--color-highlight);
+    text-decoration: underline;
+}
 button:hover, label:hover {
     cursor: pointer;
     /* text-decoration: underline; */
     background-color: gray;
-    color: var(--color-dark-highlight);
-    
+    color: var(--color-highlight);   
 }
+.list-entry:not(#now) h2:hover {
+    color: var(--color-highlight);
+}
+.active:not(#now > h2), .filter-active {
+    text-decoration: underline;
+    color: var(--color-highlight);
+}
+
+
 
 img {
     max-width: 768px;

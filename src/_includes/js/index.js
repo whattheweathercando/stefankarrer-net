@@ -101,6 +101,54 @@ setInterval(changeoO, 666);
 
 
 
+// DARK MODE
+
+// https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
+
+const modeBtn = document.querySelector(".mode-btn");
+let prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+//console.log(prefersDarkScheme);
+let modeBtnChanged = false;
+
+function initModeBtn(){
+  prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  console.log(prefersDarkScheme.matches);
+  modeBtnChanged = false;
+  if (prefersDarkScheme.matches){
+    modeBtn.innerText = "Light Mode";
+  } else {
+    modeBtn.innerText = "Dark Mode";
+  }
+}
+initModeBtn();
+window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+  console.log(`changed to ${e.matches ? "dark" : "light"} mode`)
+  initModeBtn();
+});
+
+modeBtn.addEventListener("click", function () {
+  if (prefersDarkScheme.matches) {
+    document.body.classList.toggle("light-mode");
+  } else {
+    document.body.classList.toggle("dark-mode");
+  }
+  if (!modeBtnChanged){
+    modeBtnChanged = true;
+    if (prefersDarkScheme.matches){
+      modeBtn.innerText = "Dark Mode";
+    } else {
+      modeBtn.innerText = "Light Mode";
+    }
+  } else if (modeBtnChanged){
+    modeBtnChanged = false;
+    if (prefersDarkScheme.matches){
+      modeBtn.innerText = "Light Mode";
+    } else {
+      modeBtn.innerText = "Dark Mode";
+    }
+  }
+});
+
 
 // FILTER
 
@@ -246,7 +294,7 @@ function onDocumentReady() {
       });
   });
 
-}
+} // on document ready
 
 if (document.readyState !== "loading") {
   onDocumentReady();
