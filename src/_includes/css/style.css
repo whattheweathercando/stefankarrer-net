@@ -26,13 +26,14 @@
 
 
 body {   
-    --text-color: #121212;
-    --bg-color: #eeeeee;
+    --text-color: rgb(60, 60, 60);
+    --bg-color: #fafafa;
     --color-highlight: black;
 }
 body.dark-mode {
     --text-color: #dadada;
-    --bg-color: #121212;
+    /* --bg-color: #121212; */
+    --bg-color: rgb(30, 30, 30);
     --color-highlight: white;
 }
 @media (prefers-color-scheme: dark) {
@@ -43,8 +44,8 @@ body.dark-mode {
         --color-highlight: white;
     }
     body.light-mode {
-        --text-color: rgb(30, 30, 30);
-        --bg-color: #dadada;
+        --text-color: rgb(60, 60, 60);
+        --bg-color: #fafafa;
         --color-highlight: black;
     }
 }
@@ -199,7 +200,7 @@ button:hover, label:hover {
     color: var(--color-highlight);
 }
 .active:not(#now > h2), .filter-active {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     color: var(--color-highlight);
 }
 
@@ -215,6 +216,12 @@ img {
     max-width: unset;
 }
 
+audio, video { display: block; }
+video {
+    width: 100%;
+    max-width: 768px;
+    height: auto;
+}
 
 
 

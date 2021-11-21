@@ -26,6 +26,7 @@ module.exports = () => {
                 body: record.get('body-text'),
                 images: record.get('images'),
                 audiofiles: record.get('audio-files'),
+                videofiles: record.get('video'),
                 slug: record.get('slug'),
                 type: record.get('type'),
                 website: record.get('website'),
