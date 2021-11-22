@@ -38,7 +38,12 @@ title: "index page stefankarrer.net"
                     {% endif %}
                     {% if item.images %}
                         {% set featuredImage = item.images[0] %}
-                        {% image featuredImage.url, item.title, "100vw" %}
+                        {% if item.featured %} 
+                            {% set imgLoading = "eager" %}
+                        {% else %}
+                            {% set imgLoading = "lazy" %}
+                        {% endif %}
+                        {% image featuredImage.url, item.title, "100vw", imgLoading %}
                     {% endif %}
                 </div>
             </li>
