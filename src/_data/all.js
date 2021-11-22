@@ -10,8 +10,8 @@ module.exports = () => {
     let allDatasets = []; // change 'allDatasets' to something more relevant to your project
       base('Documentation') 
         .select({ 
-            view: 'Grid All' 
-            // view: 'Grid Website' 
+            // view: 'Grid All' 
+            view: 'Grid Website' 
         })
         .eachPage(
           function page(records, fetchNextPage) {
@@ -30,6 +30,7 @@ module.exports = () => {
                 slug: record.get('slug'),
                 type: record.get('type'),
                 website: record.get('website'),
+                featured: record.get('featured'),
               });
             });
             fetchNextPage();

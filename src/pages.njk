@@ -23,13 +23,15 @@ permalink: "/d/{{ item.slug }}/"
 {% if item.videofiles %}
     {% set videofile = item.videofiles[0] %}    
     <video width="768" height="auto" controls controlsList="nodownload" poster="">
-    <source src="{{ videofile.url }}" type="video/mp4">
+    <source src="{{ videofile.url }}" type="{{ videofile.type }}">
 	</video>
 {% endif %}
 
 {% if item.audiofiles %}
     {% for audiofile in item.audiofiles %}
-        <audio controls src="{{ audiofile.url }}"></audio>
+        <audio controls>
+            <source src="{{ audiofile.url }}" type="{{ audiofile.type }}">
+        </audio> 
     {% endfor %}
 {% endif %}
 
@@ -37,6 +39,7 @@ permalink: "/d/{{ item.slug }}/"
     <div class="images-container">
     {% for image in item.images %}
         {% image image.url, item.title, "100vw" %}
+        {# <div class="caption">{{ image.filename }}</div> #}
     {% endfor %}
     </div>
 {% endif %}

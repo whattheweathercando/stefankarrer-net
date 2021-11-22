@@ -9,9 +9,10 @@
     --font-family-monospace: "Roboto Mono", Menlo, monospace;
     --font-family-sans-1: Arial, "Helvetica Neue", Helvetica, sans-serif;
     --font-family-sans-2: Verdana, Geneva, Tahoma, sans-serif;
+    --body-max-width: 1440px;
+    --footer-height: 4em;
     --main-padding: 1rem;
     --main-margin: 4rem;
-    --body-max-width: 1440px;
 }
 @media screen and (max-width: 1280px) {
     :root {
@@ -26,27 +27,31 @@
 
 
 body {   
-    --text-color: rgb(60, 60, 60);
-    --bg-color: #fafafa;
-    --color-highlight: black;
+    --text-color: black;
+    --bg-color: white;
+    --highlight-color: rgb(30, 30, 30);
+    --shadow-color: sandybrown;
 }
 body.dark-mode {
     --text-color: #dadada;
     /* --bg-color: #121212; */
     --bg-color: rgb(30, 30, 30);
-    --color-highlight: white;
+    --highlight-color: white;
+    --shadow-color: lemonchiffon;
 }
 @media (prefers-color-scheme: dark) {
     /* defaults to dark theme */
     body {
         --text-color: #dadada;
         --bg-color: rgb(30, 30, 30);
-        --color-highlight: white;
+        --highlight-color: white;
+        --shadow-color: lemonchiffon;
     }
     body.light-mode {
-        --text-color: rgb(60, 60, 60);
-        --bg-color: #fafafa;
-        --color-highlight: black;
+        --text-color: black;
+        --bg-color: white;
+        --highlight-color: rgb(30, 30, 30);
+        --shadow-color: sandybrown;
     }
 }
 
@@ -54,7 +59,7 @@ html {
     font-size: var(--font-size-base);
 }
 body {
-    font-family: var(--font-family-system);
+    font-family: var(--font-family-monospace);
     color: var(--text-color);
     background-color: var(--bg-color); 
 }
@@ -63,18 +68,21 @@ body {
 
 main, footer, header {
     max-width: var(--body-max-width);
+    margin: 0 var(--main-margin);
+    padding: var(--main-padding);
 }
 
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100vw;
-    padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
+    /* width: 100vw; */
+    min-height: var(--footer-height);
+    /* padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding)); */
     background-color: inherit;
     font-size: var(--font-size-small);
 }
-/* ?? footer -> display : grid */
+
 footer div {
     display: inline;
 }
@@ -82,8 +90,7 @@ footer div {
 
 main {
     min-height: 100vh;
-    margin: var(--main-margin);
-    padding: var(--main-padding);
+    margin-bottom: var(--main-margin);  
 }
 
 
@@ -91,7 +98,7 @@ main {
 .info {
     display: none;
 }
-.info, .info-subpage {
+.info, .info-subpage, .caption {
     margin: var(--main-padding) 0 2rem 0;
     font-size: var(--font-size-small);
 }
@@ -174,49 +181,52 @@ a {
     margin-top: 1em;
 }
 
-button, label {
+button, label, footer span {
     background-color: inherit;
     border: none;
     color: inherit;
-    padding: 0.25rem;
-    /* border: 1px solid #ccc; */
+    padding: 0 0.25rem 0 0;
+    border-right: 1px solid var(--text-color);
 }
 label input {
     display: none;
 }
 
-/* HOVER styles */
+/* HOVER / ACTIVE styles */
 a:hover {
-    color: var(--color-highlight);
+    color: var(--highlight-color);
     text-decoration: underline;
 }
 button:hover, label:hover {
     cursor: pointer;
-    /* text-decoration: underline; */
-    background-color: gray;
-    color: var(--color-highlight);   
 }
-.list-entry:not(#now) h2:hover {
-    color: var(--color-highlight);
+.list-entry:not(#now) h2:hover, button:hover, label:hover, .active:not(#now > h2), .filter-active {
+    color: var(--highlight-color);
+    text-shadow: var(--shadow-color) 1px 0 10px;
 }
-.active:not(#now > h2), .filter-active {
-    /* text-decoration: underline; */
-    color: var(--color-highlight);
-}
+
 
 
 
 img {
-    max-width: 768px;
+    max-width: 600px;
+    /* max-height: calc(100vh - var(--footer-height));
+    width: auto; */
 }
-/* #list img {} */
+
 .full-height {
-    height: 100vh;
+    height: calc(100vh - var(--footer-height));
     width: auto;
     max-width: unset;
 }
+/* .full-width {
+    max-height: unset;
+    width: 100%;
+    height: auto;
+} */
 
 audio, video { display: block; }
+
 video {
     width: 100%;
     max-width: 768px;
