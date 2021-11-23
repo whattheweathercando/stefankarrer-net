@@ -21,7 +21,7 @@
 }
 @media screen and (max-width: 768px) {
     :root {
-        --main-margin: 0;
+        --main-margin: 0rem;
     }
 }
 
@@ -65,8 +65,8 @@ body {
 }
 
 
-
-main, footer, header {
+main, header {
+/* main, footer, header { */
     max-width: var(--body-max-width);
     margin: 0 var(--main-margin);
     padding: var(--main-padding);
@@ -76,9 +76,9 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    /* width: 100vw; */
+    width: 100vw;
     min-height: var(--footer-height);
-    /* padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding)); */
+    padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
     background-color: inherit;
     font-size: var(--font-size-small);
 }

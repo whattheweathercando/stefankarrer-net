@@ -24,13 +24,39 @@ title: "index page stefankarrer.net"
                         <div>{{ item.lead | nl2br | markdown | safe }}</div>
                     {% endif %} 
                     {% if item.externallink %}
-                    <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
+                        <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
                     {% endif %}
                     {% if item.slug %}
-                    <a class="internal-link" href="/d/{{ item.slug | url }}">./d/{{ item.slug }}</a><br>
-                    <!-- <a href="{{ item.title | slug }}">./{{ item.title | slug }}</a><br> -->
+                        <a class="internal-link" href="/d/{{ item.slug | url }}">./d/{{ item.slug }}</a><br>
+                        <!-- <a href="{{ item.title | slug }}">./{{ item.title | slug }}</a><br> -->
                     {% endif %}
-                    {% if item.audiofiles %}
+
+                    {% for file in item.linkedFiles %}
+                        {% if item.onStartpage[loop.index0] %}
+                            {% if "image" in file.type %}
+                                {% if item.featured %} 
+                                    {% set imgLoading = "eager" %}
+                                {% else %}
+                                    {% set imgLoading = "lazy" %}
+                                {% endif %}
+                                {% image file.url, item.title, "100vw", imgLoading %}
+                            {% elseif "video" in file.type %}
+                                <video width="768" height="auto" controls controlsList="nodownload" poster="">
+                                    <source src="{{ file.url }}" type="{{ file.type }}">
+                                </video>
+                            {% elseif "audio" in file.type %}
+                                <audio controls>
+                                    <source src="{{ file.url }}" type="{{ file.type }}">
+                                </audio> 
+                            {% endif %}
+                            {% if item.linkedCaptionsShow[loop.index0] %}
+                                {%set caption = item.linkedCaptions[loop.index0] %}
+                                <div class="caption">{{ caption }}</div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- {% if item.audiofiles %}
                         {% set featuredAudio = item.audiofiles[0] %}
                         <audio controls>
                             <source src="{{ featuredAudio.url }}" type="{{ featuredAudio.type }}">
@@ -44,7 +70,8 @@ title: "index page stefankarrer.net"
                             {% set imgLoading = "lazy" %}
                         {% endif %}
                         {% image featuredImage.url, item.title, "100vw", imgLoading %}
-                    {% endif %}
+                    {% endif %} -->
+
                 </div>
             </li>
         {% endif %}
