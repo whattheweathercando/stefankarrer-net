@@ -21,13 +21,13 @@ title: "index page stefankarrer.net"
                     <span>{{ item.startdate | yearFromDate }}</span><br>
                     {% endif %} -->
                     {% if item.lead %}
-                        <div>{{ item.lead | nl2br | markdown | safe }}</div>
+                        <div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>
                     {% endif %} 
-                    {% if item.externallink %}
+                    <!-- {% if item.externallink %}
                         <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
-                    {% endif %}
+                    {% endif %} -->
                     {% if item.slug %}
-                        <a class="internal-link" href="/d/{{ item.slug | url }}">./d/{{ item.slug }}</a><br>
+                        <a class="internal-link" href="/d/{{ item.slug | url }}">More > ./d/{{ item.slug }}></a><br>
                         <!-- <a href="{{ item.title | slug }}">./{{ item.title | slug }}</a><br> -->
                     {% endif %}
 
@@ -39,7 +39,11 @@ title: "index page stefankarrer.net"
                                 {% else %}
                                     {% set imgLoading = "lazy" %}
                                 {% endif %}
-                                {% image file.url, item.title, "100vw", imgLoading %}
+                                {% if "gif" in file.type %}
+                                    <img src="{{file.url}}" alt="{{item.title}}">
+                                {% else %}
+                                    {% image file.url, item.title, "100vw", imgLoading %}
+                                {% endif %}
                             {% elseif "video" in file.type %}
                                 <video width="768" height="auto" controls controlsList="nodownload" poster="">
                                     <source src="{{ file.url }}" type="{{ file.type }}">
@@ -56,22 +60,6 @@ title: "index page stefankarrer.net"
                         {% endif %}
                     {% endfor %}
                     
-                    <!-- {% if item.audiofiles %}
-                        {% set featuredAudio = item.audiofiles[0] %}
-                        <audio controls>
-                            <source src="{{ featuredAudio.url }}" type="{{ featuredAudio.type }}">
-                        </audio> 
-                    {% endif %}
-                    {% if item.images %}
-                        {% set featuredImage = item.images[0] %}
-                        {% if item.featured %} 
-                            {% set imgLoading = "eager" %}
-                        {% else %}
-                            {% set imgLoading = "lazy" %}
-                        {% endif %}
-                        {% image featuredImage.url, item.title, "100vw", imgLoading %}
-                    {% endif %} -->
-
                 </div>
             </li>
         {% endif %}

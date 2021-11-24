@@ -16,11 +16,6 @@ permalink: "/d/{{ item.slug }}/"
     {% endif %}
 </div>
 
-{% if item.body %}
-    <div class="body-text">{{ item.body | nl2br | markdown | safe }}</div>
-{% endif %} 
-
-
 {% for file in item.linkedFiles %}
     {% if "image" in file.type %}
         {% if item.featured %} 
@@ -28,7 +23,12 @@ permalink: "/d/{{ item.slug }}/"
         {% else %}
             {% set imgLoading = "lazy" %}
         {% endif %}
-        {% image file.url, item.title, "100vw", imgLoading %}
+        {# {% image file.url, item.title, "100vw", imgLoading %} #}
+        {% if "gif" in file.type %}
+            <img src="{{file.url}}" alt="{{item.title}}">
+        {% else %}
+            {% image file.url, item.title, "100vw", imgLoading %}
+        {% endif %}
     {% elseif "video" in file.type %}
         <video width="768" height="auto" controls controlsList="nodownload" poster="">
             <source src="{{ file.url }}" type="{{ file.type }}">
@@ -44,25 +44,6 @@ permalink: "/d/{{ item.slug }}/"
     {% endif %}
 {% endfor %}
 
-{# {% if item.videofiles %}
-    {% set videofile = item.videofiles[0] %}    
-    <video width="768" height="auto" controls controlsList="nodownload" poster="">
-    <source src="{{ videofile.url }}" type="{{ videofile.type }}">
-	</video>
-{% endif %}
-
-{% if item.audiofiles %}
-    {% for audiofile in item.audiofiles %}
-        <audio controls>
-            <source src="{{ audiofile.url }}" type="{{ audiofile.type }}">
-        </audio> 
-    {% endfor %}
-{% endif %}
-
-{% if item.images %}
-    <div class="images-container">
-    {% for image in item.images %}
-        {% image image.url, item.title, "100vw" %}
-    {% endfor %}
-    </div>
-{% endif %} #}
+{% if item.body %}
+    <div class="body-text">{{ item.body | nl2br | markdown | safe }}</div>
+{% endif %} 
