@@ -3,9 +3,8 @@
 var el = {};
 
 const listEntries = document.querySelectorAll(".list-entry");
-const listTitles = document.querySelectorAll("li h2");
+const listTitles = document.querySelectorAll("li h2.title-index");
 const expandButton = document.querySelector("#expand");
-// const collapseButton = document.querySelector("#collapse");
 const infoDivs = document.querySelectorAll(".info");
 
 
@@ -43,6 +42,15 @@ listEntries.forEach(el => {
 })
 
 
+// add target blank and noopener to external links
+let links = document.getElementsByTagName('a');
+for (var i = 0; i < links.length; i++) {
+  if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+    links[i].target = '_blank';
+    links[i].rel = "noopener";
+  }
+}
+
 // show content on click
 listTitles.forEach(el => {
 		el.addEventListener('click', function(event) {
@@ -52,7 +60,12 @@ listTitles.forEach(el => {
 });
 
 // expand / collapse index list
-let expanded = false;
+let expanded = true;
+if (!expanded){
+  expandButton.innerText = "Expand all"
+} else {
+  expandButton.innerText = "Collapse all"
+}
 expandButton.addEventListener('click', function(){
   if (!expanded){
     expanded = true
@@ -77,10 +90,10 @@ expandButton.addEventListener('click', function(){
 
 
 // images full height on click
-const listImages = document.querySelectorAll("#list img");
-listImages.forEach(el => {
+const images = document.querySelectorAll("img");
+images.forEach(el => {
   el.addEventListener('click', function(e) {
-    el.classList.toggle("full-height");
+    el.classList.toggle("full-size");
   });
 })
 

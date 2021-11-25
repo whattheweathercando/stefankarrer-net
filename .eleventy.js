@@ -3,7 +3,7 @@ const { minify } = require("terser");
 const markdownIt = require("markdown-it");
 const Image = require("@11ty/eleventy-img");
 
-async function imageShortcode(src, alt, sizes, loading) {
+async function imageShortcode(src, alt, sizes, loading, aspectClass) {
     let metadata = await Image(src, {
         outputDir: "./dist/img/",
         urlPath: "/img/",
@@ -15,7 +15,7 @@ async function imageShortcode(src, alt, sizes, loading) {
       alt,
       sizes,
       loading,
-      //loading: "lazy",
+      class: aspectClass,
       decoding: "async",
     };
   

@@ -27,13 +27,18 @@ title: "index page stefankarrer.net"
                         <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
                     {% endif %} -->
                     {% if item.slug %}
-                        <a class="internal-link" href="/d/{{ item.slug | url }}">More > ./d/{{ item.slug }}></a><br>
+                        <a class="internal-link" href="/d/{{ item.slug | url }}">More > ./d/{{ item.slug }}</a><br>
                         <!-- <a href="{{ item.title | slug }}">./{{ item.title | slug }}</a><br> -->
                     {% endif %}
 
                     {% for file in item.linkedFiles %}
                         {% if item.onStartpage[loop.index0] %}
                             {% if "image" in file.type %}
+                                {% if file.width >= file.height %}
+                                    {% set aspectClass = "landscape" %}
+                                {% else %}
+                                    {% set aspectClass = "portrait" %}
+                                {% endif %}
                                 {% if item.featured %} 
                                     {% set imgLoading = "eager" %}
                                 {% else %}
@@ -42,10 +47,10 @@ title: "index page stefankarrer.net"
                                 {% if "gif" in file.type %}
                                     <img src="{{file.url}}" alt="{{item.title}}">
                                 {% else %}
-                                    {% image file.url, item.title, "100vw", imgLoading %}
+                                    {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
                                 {% endif %}
                             {% elseif "video" in file.type %}
-                                <video width="768" height="auto" controls controlsList="nodownload" poster="">
+                                <video width="600" height="auto" controls controlsList="nodownload" poster="">
                                     <source src="{{ file.url }}" type="{{ file.type }}">
                                 </video>
                             {% elseif "audio" in file.type %}

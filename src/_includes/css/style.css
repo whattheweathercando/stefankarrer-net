@@ -13,6 +13,7 @@
     --footer-height: 4em;
     --main-padding: 1rem;
     --main-margin: 4rem;
+    --purple: #7c39ed;
 }
 @media screen and (max-width: 1280px) {
     :root {
@@ -65,13 +66,6 @@ body {
 }
 
 
-main, header {
-/* main, footer, header { */
-    max-width: var(--body-max-width);
-    margin: 0 var(--main-margin);
-    padding: var(--main-padding);
-}
-
 footer {
     position: fixed;
     left: 0;
@@ -81,6 +75,7 @@ footer {
     padding: var(--main-padding) calc(var(--main-margin) + var(--main-padding));
     background-color: inherit;
     font-size: var(--font-size-small);
+    border-top: 1px solid gray;
 }
 
 footer div {
@@ -90,10 +85,59 @@ footer div {
 
 main {
     min-height: 100vh;
-    margin-bottom: var(--main-margin);  
+    margin-bottom: calc(var(--main-margin) + var(--footer-height));
+    /* margin: var(--main-margin) 0 calc(var(--main-margin) + var(--footer-height)) 0; */
+}
+.subpage main {
+    max-width: var(--body-max-width);
+    margin: 0 var(--main-margin) calc(var(--main-margin) + var(--footer-height)) var(--main-margin);
+    padding: var(--main-padding);
 }
 
 
+/* LIST  */
+
+ul#list.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+/* LIST ENTRIES */
+
+li {
+    max-width: var(--body-max-width);
+    /* padding: 0.0625rem 0; */
+    /* padding: 0.5rem 0; */
+    padding: 0.5rem calc(var(--main-padding) + var(--main-margin));
+    border-bottom: 1px solid gray;
+}
+/* li:first-child {
+    border-top: 1px solid gray;
+} */
+
+#list.filtered li:not(.selected) {
+    display: none;
+}
+li:not(#now) h2 {
+    cursor: pointer;
+}
+#now {
+    color: gray;
+    display: block !important;
+}
+#oo {
+    min-width: 3rem;
+}
+
+
+/* .title-index, .title {
+} */
+
+.title, .back-home {
+    margin: 0 0 var(--main-padding) 0;
+    display: block;
+}
 
 .info {
     display: none;
@@ -109,17 +153,17 @@ main {
 .info, .lead-text, .body-text, .caption {
     font-size: var(--font-size-small);
 }
-
+.lead-text, .body-text {
+    max-width: 600px;
+}
 .info, .body-text, .caption {
     margin: var(--main-padding) 0 2rem 0;
 }
 .body-text {
     margin-top: 2rem;
 }
-.title, .back-home {
-    margin: 0 0 var(--main-padding) 0;
-    display: block;
-}
+
+
 
 img, audio {
     /* margin: var(--main-padding) 0; */
@@ -127,61 +171,16 @@ img, audio {
 }
 
 
-
-
-/* ENTRIES LIST  */
-
-ul#list.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-}
-
-li {
-    padding: 0.0625rem 0;
-}
-li:not(#now) {
-    cursor: pointer;
-}
-
-/* filter  */
-#list.filtered li:not(.selected) {
-    display: none;
-}
-
-
-
-#now {
-    cursor: auto;
-    color: gray;
-    display: block !important;
-}
-
-
-#oo {
-    min-width: 3rem;
-}
-
-
-
-
-h1, h2 {
-    /* font-size: var(--font-size-large); */
+h1, h2, h3, h4 {
     font-size: var(--font-size-base);
-}
-h3, h4 {
-    font-size: var(--font-size-base);
-}
-
-p {
-    margin: 0;
-    padding: 0;
 }
 
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
+    text-decoration: underline gray 1px;
     color: inherit;
+    /* color: var(--purple); */
 }
 .external-link, .internal-link {
     display: inline-block;
@@ -202,7 +201,7 @@ label input {
 /* HOVER / ACTIVE styles */
 a:hover {
     color: var(--highlight-color);
-    text-decoration: underline;
+    /* text-decoration: underline gray 1px; */
 }
 button:hover, label:hover {
     cursor: pointer;
@@ -214,23 +213,34 @@ button:hover, label:hover {
 
 
 
-
 img {
+    cursor: zoom-in;
+}
+img.landscape {
     max-width: 600px;
-    /* max-height: calc(100vh - var(--footer-height));
-    width: auto; */
+    height: auto; 
+}
+img.portrait {
+    max-height: calc(100vh - var(--footer-height));
+    width: auto;
 }
 
-.full-height {
-    height: calc(100vh - var(--footer-height));
-    width: auto;
-    max-width: unset;
+.full-size {
+    cursor: zoom-out;
 }
-/* .full-width {
+.landscape.full-size {
     max-height: unset;
-    width: 100%;
+    max-width: unset;
+    width: auto;  
+    height: 100vh;
+}
+.portrait.full-size {
+    max-height: unset;
+    max-width: unset;
+    width: 100vw;  
     height: auto;
-} */
+}
+
 
 audio, video { display: block; }
 

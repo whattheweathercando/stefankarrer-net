@@ -10,7 +10,6 @@ module.exports = () => {
     let allDatasets = []; // change 'allDatasets' to something more relevant to your project
       base('Documentation') 
         .select({ 
-            // view: 'Grid All' 
             view: 'Grid Website' 
         })
         .eachPage(

@@ -18,16 +18,20 @@ permalink: "/d/{{ item.slug }}/"
 
 {% for file in item.linkedFiles %}
     {% if "image" in file.type %}
+        {% if file.width >= file.height %}
+            {% set aspectClass = "landscape" %}
+        {% else %}
+            {% set aspectClass = "portrait" %}
+        {% endif %}
         {% if item.featured %} 
             {% set imgLoading = "eager" %}
         {% else %}
             {% set imgLoading = "lazy" %}
         {% endif %}
-        {# {% image file.url, item.title, "100vw", imgLoading %} #}
         {% if "gif" in file.type %}
             <img src="{{file.url}}" alt="{{item.title}}">
         {% else %}
-            {% image file.url, item.title, "100vw", imgLoading %}
+            {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
         {% endif %}
     {% elseif "video" in file.type %}
         <video width="768" height="auto" controls controlsList="nodownload" poster="">
