@@ -29,7 +29,7 @@ permalink: "/d/{{ item.slug }}/"
             {% set imgLoading = "lazy" %}
         {% endif %}
         {% if "gif" in file.type %}
-            <img src="{{file.url}}" alt="{{item.title}}">
+            <img class="gif" src="{{file.url}}" alt="{{item.title}}">
         {% else %}
             {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
         {% endif %}

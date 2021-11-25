@@ -61,6 +61,7 @@ html {
 }
 body {
     font-family: var(--font-family-monospace);
+    /* hyphens: auto; */
     color: var(--text-color);
     background-color: var(--bg-color); 
 }
@@ -107,8 +108,7 @@ ul#list.grid {
 
 li {
     max-width: var(--body-max-width);
-    /* padding: 0.0625rem 0; */
-    /* padding: 0.5rem 0; */
+    /* padding: 0.0625rem 0; */    
     padding: 0.5rem calc(var(--main-padding) + var(--main-margin));
     border-bottom: 1px solid gray;
 }
@@ -134,9 +134,9 @@ li:not(#now) h2 {
 /* .title-index, .title {
 } */
 
-.title, .back-home {
+.title {
     margin: 0 0 var(--main-padding) 0;
-    display: block;
+    /* display: block; */
 }
 
 .info {
@@ -181,10 +181,14 @@ a {
     text-decoration: underline gray 1px;
     color: inherit;
     /* color: var(--purple); */
+    word-break: break-all;
 }
 .external-link, .internal-link {
     display: inline-block;
     margin-top: 1em;
+}
+footer a {
+    word-break: normal;
 }
 
 button, label, footer span {
@@ -192,11 +196,14 @@ button, label, footer span {
     border: none;
     color: inherit;
     padding: 0 0.25rem 0 0;
-    border-right: 1px solid var(--text-color);
+    /* border-right: 1px solid var(--text-color); */
 }
 label input {
     display: none;
 }
+/* #expand {
+    min-width: 110px;
+} */
 
 /* HOVER / ACTIVE styles */
 a:hover {
@@ -208,7 +215,7 @@ button:hover, label:hover {
 }
 .list-entry:not(#now) h2:hover, button:hover, label:hover, .active:not(#now > h2), .filter-active {
     color: var(--highlight-color);
-    text-shadow: var(--shadow-color) 1px 0 10px;
+    text-shadow: var(--shadow-color) 1px 0 1em;
 }
 
 
@@ -224,7 +231,10 @@ img.portrait {
     max-height: calc(100vh - var(--footer-height));
     width: auto;
 }
-
+img.gif {
+    max-width: 600px;
+    height: auto; 
+}
 .full-size {
     cursor: zoom-out;
 }
@@ -240,9 +250,21 @@ img.portrait {
     width: 100vw;  
     height: auto;
 }
+@media screen and (max-width: 768px) {
+    img.portrait {
+        width: 100%;
+        height: auto;
+    }
+    .portrait.full-size {
+        max-height: unset;
+        max-width: unset;
+        width: auto;  
+        height: 100vh;
+    }
+}
 
 
-audio, video { display: block; }
+audio, video { display: block; width: 100%; }
 
 video {
     width: 100%;
