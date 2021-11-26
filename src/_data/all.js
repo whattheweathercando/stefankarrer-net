@@ -20,6 +20,7 @@ module.exports = () => {
                 location: record.get('location'),
                 startdate: record.get('startdate'),
                 enddate: record.get('enddate'),
+                showInternalLink: record.get('show-internal-link'),
                 externallink: record.get('external-link'),
                 lead: record.get('lead-text'),
                 body: record.get('body-text'),

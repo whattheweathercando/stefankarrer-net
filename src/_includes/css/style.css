@@ -10,7 +10,7 @@
     --font-family-sans-1: Arial, "Helvetica Neue", Helvetica, sans-serif;
     --font-family-sans-2: Verdana, Geneva, Tahoma, sans-serif;
     --body-max-width: 1440px;
-    --footer-height: 4em;
+    --footer-height: 6em;
     --main-padding: 1rem;
     --main-margin: 4rem;
     --purple: #7c39ed;
@@ -82,7 +82,14 @@ footer {
 footer div {
     display: inline;
 }
-
+.filters {
+    display: block;
+}
+@media screen and (max-width: 768px) {
+    .filters {
+        display: none;
+    }
+}
 
 main {
     min-height: 100vh;
@@ -264,11 +271,13 @@ img.gif {
 }
 
 
-audio, video { display: block; width: 100%; }
-
+audio, video { display: block; }
+@media screen and (max-width: 375px) {
+    audio { width: 100%; }
+}
 video {
     width: 100%;
-    max-width: 768px;
+    max-width: 600px;
     height: auto;
 }
 

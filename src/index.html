@@ -26,8 +26,8 @@ title: "index page stefankarrer.net"
                     <!-- {% if item.externallink %}
                         <a class="external-link" href="{{ item.externallink | url }}" target="_blank" rel="noopener">{{ item.externallink }}</a><br>
                     {% endif %} -->
-                    {% if item.slug %}
-                        <a class="internal-link" href="/d/{{ item.slug | url }}">More > ./d/{{ item.slug }}</a><br>
+                    {% if item.slug and item.showInternalLink %}
+                        <a class="internal-link" href="/d/{{ item.slug | url }}">Documentation ./d/{{ item.slug }}</a><br>
                         <!-- <a href="{{ item.title | slug }}">./{{ item.title | slug }}</a><br> -->
                     {% endif %}
 

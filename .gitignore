@@ -3,6 +3,8 @@ dist
 /.cache
 .env
 
+concreteplatform
+
 # Text notes / log
 *.txt 
 

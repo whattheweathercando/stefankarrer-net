@@ -30,7 +30,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.setDataDeepMerge(true);
 
     // Passthrough copy
-    //eleventyConfig.addPassthroughCopy('src/assets');
+    eleventyConfig.addPassthroughCopy('concreteplatform');
 
     // Layout alias
     eleventyConfig.addLayoutAlias('base', 'layouts/base.njk');
