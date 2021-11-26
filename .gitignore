@@ -3,7 +3,7 @@ dist
 /.cache
 .env
 
-concreteplatform
+# concreteplatform
 
 # Text notes / log
 *.txt 

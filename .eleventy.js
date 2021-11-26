@@ -8,9 +8,16 @@ async function imageShortcode(src, alt, sizes, loading, aspectClass) {
         outputDir: "./dist/img/",
         urlPath: "/img/",
         widths: [600, 1200, 1800],
-        formats: ["webp", "jpeg"]
+        formats: ["webp", "jpeg"],
+        cacheOptions: {
+            // if a remote image URL, this is the amount of time before it fetches a fresh copy
+            duration: "1d",
+            // project-relative path to the cache directory
+            directory: ".cache",
+            removeUrlQueryParams: false,
+        },
     });
-  
+    
     let imageAttributes = {
       alt,
       sizes,

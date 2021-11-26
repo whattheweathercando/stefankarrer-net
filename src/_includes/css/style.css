@@ -83,7 +83,8 @@ footer div {
     display: inline;
 }
 .filters {
-    display: block;
+    /* display: block; */
+    display: none;
 }
 @media screen and (max-width: 768px) {
     .filters {
@@ -220,7 +221,7 @@ a:hover {
 button:hover, label:hover {
     cursor: pointer;
 }
-.list-entry:not(#now) h2:hover, button:hover, label:hover, .active:not(#now > h2), .filter-active {
+.list-entry:not(#now) h2:hover, button:hover, label:hover, .back-home:hover, .active:not(#now > h2), .filter-active {
     color: var(--highlight-color);
     text-shadow: var(--shadow-color) 1px 0 1em;
 }
