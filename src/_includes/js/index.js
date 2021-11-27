@@ -103,7 +103,6 @@ const oO = ["O0", "00", "0O", "OO", "oO", "Oo", "oo"];
 let countoO = 0;
 
 const h2oO = document.querySelector('[data-id="oo"] h2');
-// console.log(h2oO);
 h2oO.innerHTML = oO[countoO];
 
 function changeoO() {
