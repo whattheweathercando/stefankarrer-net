@@ -11,7 +11,7 @@ async function imageShortcode(src, alt, sizes, loading, aspectClass) {
         formats: ["webp", "jpeg"],
         cacheOptions: {
             // if a remote image URL, this is the amount of time before it fetches a fresh copy
-            duration: "1d",
+            duration: "3d",
             // project-relative path to the cache directory
             directory: ".cache",
             removeUrlQueryParams: false,

@@ -8,12 +8,13 @@
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
     --font-family-monospace: "Roboto Mono", Menlo, monospace;
     --font-family-sans-1: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    --font-family-sans-2: Verdana, Geneva, Tahoma, sans-serif;
+    --font-family-sans-2: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
     --body-max-width: 1440px;
     --footer-height: 6em;
     --main-padding: 1rem;
     --main-margin: 4rem;
     --purple: #7c39ed;
+    --green: green;
 }
 @media screen and (max-width: 1280px) {
     :root {
