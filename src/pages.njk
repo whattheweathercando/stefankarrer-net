@@ -17,30 +17,26 @@ permalink: "/d/{{ item.slug }}/"
 </div>
 
 {% for file in item.linkedFiles %}
-    {% if "image" in file.type %}
-        {% if file.width >= file.height %}
-            {% set aspectClass = "landscape" %}
-        {% else %}
-            {% set aspectClass = "portrait" %}
-        {% endif %}
-        {% if item.featured %} 
-            {% set imgLoading = "eager" %}
-        {% else %}
-            {% set imgLoading = "lazy" %}
-        {% endif %}
-        {% if "gif" in file.type %}
-            <img class="gif" src="{{file.url}}" alt="{{item.title}}">
-        {% else %}
-            {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
-        {% endif %}
-    {% elseif "video" in file.type %}
+    {% if "video" in file.type %}
         <video width="768" height="auto" controls controlsList="nodownload" poster="">
             <source src="{{ file.url }}" type="{{ file.type }}">
         </video>
     {% elseif "audio" in file.type %}
         <audio controls>
             <source src="{{ file.url }}" type="{{ file.type }}">
-        </audio> 
+        </audio>
+    {% elseif "image" in file.type %}
+        {% if file.width >= file.height %}
+            {% set aspectClass = "landscape" %}
+        {% else %}
+            {% set aspectClass = "portrait" %}
+        {% endif %}
+        {% set imgLoading = "lazy" %}
+        {% if "gif" in file.type %}
+            <img class="gif" src="{{file.url}}" alt="{{item.title}}">
+        {% else %}
+            {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
+        {% endif %}
     {% endif %}
     {% if item.linkedCaptionsShow[loop.index0] %}
         {%set caption = item.linkedCaptions[loop.index0] %}

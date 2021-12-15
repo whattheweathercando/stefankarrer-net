@@ -1,20 +1,21 @@
 
 /* CSS Variables */
 :root {
-    /* --font-size-base: 16px; */
     --font-size-base: 1.4vw;
     --font-size-small: 0.75rem;
     --font-size-large: 2rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
-    --font-family-monospace: "Fira Code", "Roboto Mono", Menlo, monospace;
-    --font-family-sans-1: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    --font-family-sans-2: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+    --font-family-monospace: "Roboto Mono", Menlo, monospace;
+    /* "Fira Code" */
+    --font-family-sans-1: Helvetica, Roboto, sans-serif;
+    --font-family-sans-2: "Open Sans", Verdana, Tahoma, sans-serif;
     --body-max-width: 1440px;
     --footer-height: 6em;
     --main-padding: 1rem;
     --main-margin: 4rem;
     --purple: #7c39ed;
     --green: green;
+    --gradient-1: linear-gradient(lemonchiffon, var(--purple));
 }
 @media screen and (max-width: 1280px) {
     :root {
@@ -68,9 +69,10 @@ html {
 }
 body {
     font-family: var(--font-family-monospace);
+    letter-spacing: 0.025em;
     /* hyphens: auto; */
     color: var(--text-color);
-    background-color: var(--bg-color); 
+    background: var(--bg-color); 
 }
 
 
@@ -113,6 +115,7 @@ main {
 
 /* LIST  */
 
+
 ul#list.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -125,7 +128,7 @@ li {
     max-width: var(--body-max-width);
     /* padding: 0.0625rem 0; */    
     padding: 0.5rem calc(var(--main-padding) + var(--main-margin));
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 0px solid var(--border-color);
 }
 /* li:first-child {
     border-top: 1px solid gray;
@@ -136,6 +139,9 @@ li {
 }
 li:not(#now) h2 {
     cursor: pointer;
+}
+li:not(#now):not(#oo) h2 {
+    text-transform: uppercase;
 }
 #now {
     color: gray;
