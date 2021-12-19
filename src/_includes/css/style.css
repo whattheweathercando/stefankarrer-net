@@ -8,7 +8,7 @@
     --font-family-monospace: "Roboto Mono", Menlo, monospace;
     /* "Fira Code" */
     --font-family-sans-1: Helvetica, Roboto, sans-serif;
-    --font-family-sans-2: "Open Sans", Verdana, Tahoma, sans-serif;
+    --font-family-sans-2: Lato, "Open Sans", Verdana, Tahoma, sans-serif;
     --body-max-width: 1440px;
     --footer-height: 6em;
     --main-padding: 1rem;
@@ -42,7 +42,7 @@ body.dark-mode {
     --bg-color: rgb(15, 15, 15);
     --highlight-color: white;
     /* --shadow-color: lemonchiffon; */
-    --shadow-color: sandybrown;
+    --shadow-color: green;
     --border-color: rgb(45, 45, 45);
 }
 @media (prefers-color-scheme: dark) {
@@ -52,7 +52,7 @@ body.dark-mode {
         --bg-color: rgb(15, 15, 15);
         --highlight-color: white;
         /* --shadow-color: lemonchiffon; */
-        --shadow-color: sandybrown;
+        --shadow-color: green;
         --border-color: rgb(45, 45, 45);
     }
     body.light-mode {
@@ -68,8 +68,9 @@ html {
     font-size: var(--font-size-base);
 }
 body {
+    /* font-family: var(--font-family-sans-2); */
     font-family: var(--font-family-monospace);
-    letter-spacing: 0.025em;
+    letter-spacing: 0.0125em;
     /* hyphens: auto; */
     color: var(--text-color);
     background: var(--bg-color); 
@@ -141,7 +142,7 @@ li:not(#now) h2 {
     cursor: pointer;
 }
 li:not(#now):not(#oo) h2 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 #now {
     color: gray;
@@ -237,8 +238,7 @@ button:hover, label:hover {
 }
 .list-entry:not(#now) h2:hover, button:hover, label:hover, .back-home:hover, .active:not(#now > h2), .filter-active {
     color: var(--highlight-color);
-    /* text-shadow: var(--shadow-color) 0.5px 0 1px; */
-    /* text-decoration: underline gray 1px; */
+    text-shadow: var(--shadow-color) 0 0 1.5em;
 }
 
 
