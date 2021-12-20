@@ -1,3 +1,20 @@
+/*
+COLORS
+tan
+sandybrown
+lemonchiffon
+purple, #7c39ed; 
+green
+*/
+
+/*
+FONTS
+monospace
+fira code
+
+sans
+Lato
+*/
 
 /* CSS Variables */
 :root {
@@ -6,16 +23,12 @@
     --font-size-large: 2rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
     --font-family-monospace: "Roboto Mono", Menlo, monospace;
-    /* "Fira Code" */
-    --font-family-sans-1: Helvetica, Roboto, sans-serif;
-    --font-family-sans-2: Lato, "Open Sans", Verdana, Tahoma, sans-serif;
+    --font-family-sans: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
     --body-max-width: 1440px;
     --footer-height: 6em;
     --main-padding: 1rem;
     --main-margin: 4rem;
-    --purple: #7c39ed;
-    --green: green;
-    --gradient-1: linear-gradient(lemonchiffon, var(--purple));
+    /* --gradient-1: linear-gradient(sandybrown, var(--purple)); */
 }
 @media screen and (max-width: 1280px) {
     :root {
@@ -33,7 +46,7 @@ body {
     --text-color: rgb(30, 30, 30);
     --bg-color: white;
     --highlight-color: black;
-    --shadow-color: sandybrown;
+    --shadow-color: tan;
     --border-color: #ccc;
 }
 body.dark-mode {
@@ -41,8 +54,7 @@ body.dark-mode {
     /* --bg-color: #121212; */
     --bg-color: rgb(15, 15, 15);
     --highlight-color: white;
-    /* --shadow-color: lemonchiffon; */
-    --shadow-color: green;
+    --shadow-color: none;
     --border-color: rgb(45, 45, 45);
 }
 @media (prefers-color-scheme: dark) {
@@ -51,15 +63,14 @@ body.dark-mode {
         --text-color: #dadada;
         --bg-color: rgb(15, 15, 15);
         --highlight-color: white;
-        /* --shadow-color: lemonchiffon; */
-        --shadow-color: green;
+        --shadow-color: none;
         --border-color: rgb(45, 45, 45);
     }
     body.light-mode {
         --text-color: rgb(30, 30, 30);
         --bg-color: white;
         --highlight-color: black;
-        --shadow-color: sandybrown;
+        --shadow-color: tan;
         --border-color: #ccc;
     }
 }
@@ -68,8 +79,8 @@ html {
     font-size: var(--font-size-base);
 }
 body {
-    /* font-family: var(--font-family-sans-2); */
-    font-family: var(--font-family-monospace);
+    font-family: var(--font-family-system);
+    /* font-family: var(--font-family-monospace); */
     letter-spacing: 0.0125em;
     /* hyphens: auto; */
     color: var(--text-color);
@@ -126,10 +137,11 @@ ul#list.grid {
 /* LIST ENTRIES */
 
 li {
-    max-width: var(--body-max-width);
-    /* padding: 0.0625rem 0; */    
-    padding: 0.5rem calc(var(--main-padding) + var(--main-margin));
-    border-bottom: 0px solid var(--border-color);
+    max-width: var(--body-max-width);  
+    /* padding: 0.5rem calc(var(--main-padding) + var(--main-margin));
+    border-bottom: 0px solid var(--border-color); */
+    margin: 0.5rem calc(var(--main-padding) + var(--main-margin));
+    border: 1px solid var(--border-color);
 }
 /* li:first-child {
     border-top: 1px solid gray;
@@ -137,6 +149,9 @@ li {
 
 #list.filtered li:not(.selected) {
     display: none;
+}
+li h2 {
+    font-family: var(--font-family-monospace);
 }
 li:not(#now) h2 {
     cursor: pointer;
