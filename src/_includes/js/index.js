@@ -55,6 +55,7 @@ for (var i = 0; i < links.length; i++) {
 listTitles.forEach(el => {
 		el.addEventListener('click', function(event) {
       el.classList.toggle("active");
+      el.classList.toggle("collapsed");
 			el.parentElement.querySelector(".info").classList.toggle("show");
 		})
 });
@@ -75,6 +76,7 @@ expandButton.addEventListener('click', function(){
     })
     listTitles.forEach(el => {
       el.classList.add("active");
+      el.classList.remove("collapsed");
     })
   } else {
     expanded = false
@@ -84,6 +86,7 @@ expandButton.addEventListener('click', function(){
     })
     listTitles.forEach(el => {
       el.classList.remove("active");
+      el.classList.add("collapsed");
     })
   }
 });
@@ -283,6 +286,31 @@ function onFilterChange(input) {
       renderCount(el.items.length);
   }
 }
+
+
+// // BASIC SEARCH
+// const searchInput = document.querySelector("#search-input");
+// searchInput.addEventListener('keyup', searchFunction);
+// function searchFunction() {
+//   // Declare variables
+//   var input, filter, ul, li, a, i, txtValue;
+//   input = document.getElementById('search-input');
+//   filter = input.value.toUpperCase();
+//   ul = document.getElementById("list");
+//   li = ul.getElementsByTagName('li');
+
+//   // Loop through all list items, and hide those who don't match the search query
+//   for (i = 0; i < li.length; i++) {
+//     title = li[i].getElementsByTagName("h2")[0];
+//     txtValue = title.innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       li[i].style.display = "";
+//     } else {
+//       li[i].style.display = "none";
+//     }
+//   }
+// }
+
 
 /**
 * This is the app entry point

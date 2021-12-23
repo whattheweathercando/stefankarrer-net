@@ -9,11 +9,15 @@ green
 
 /*
 FONTS
+
 monospace
-fira code
+"IBM Plex Mono"
+"Fira Code"
 
 sans
 Lato
+"Open Sans"
+
 */
 
 /* CSS Variables */
@@ -23,12 +27,12 @@ Lato
     --font-size-large: 2rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
     --font-family-monospace: "Roboto Mono", Menlo, monospace;
-    --font-family-sans: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+    --font-family-sans: Lato, "Open Sans", Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
     --body-max-width: 1440px;
     --footer-height: 6em;
     --main-padding: 1rem;
     --main-margin: 4rem;
-    /* --gradient-1: linear-gradient(sandybrown, var(--purple)); */
+    --opacity-collapsed: 0.5; /* 50% opacity */
 }
 @media screen and (max-width: 1280px) {
     :root {
@@ -42,17 +46,17 @@ Lato
 }
 
 
-body {   
-    --text-color: rgb(30, 30, 30);
+body {  
     --bg-color: white;
+    --text-color: black;
+    /* --text-color: rgb(30, 30, 30); */
     --highlight-color: black;
     --shadow-color: tan;
     --border-color: #ccc;
 }
 body.dark-mode {
-    --text-color: #dadada;
-    /* --bg-color: #121212; */
     --bg-color: rgb(15, 15, 15);
+    --text-color: #dadada;
     --highlight-color: white;
     --shadow-color: none;
     --border-color: rgb(45, 45, 45);
@@ -60,15 +64,15 @@ body.dark-mode {
 @media (prefers-color-scheme: dark) {
     /* defaults to dark theme */
     body {
-        --text-color: #dadada;
         --bg-color: rgb(15, 15, 15);
+        --text-color: #dadada;
         --highlight-color: white;
         --shadow-color: none;
         --border-color: rgb(45, 45, 45);
     }
     body.light-mode {
-        --text-color: rgb(30, 30, 30);
         --bg-color: white;
+        --text-color: black;
         --highlight-color: black;
         --shadow-color: tan;
         --border-color: #ccc;
@@ -156,9 +160,9 @@ li h2 {
 li:not(#now) h2 {
     cursor: pointer;
 }
-li:not(#now):not(#oo) h2 {
-    /* text-transform: uppercase; */
-}
+/* li:not(#now):not(#oo) h2 {
+    text-transform: uppercase;
+} */
 #now {
     color: gray;
     display: block !important;
@@ -252,10 +256,13 @@ button:hover, label:hover {
     cursor: pointer;
 }
 .list-entry:not(#now) h2:hover, button:hover, label:hover, .back-home:hover, .active:not(#now > h2), .filter-active {
+    opacity: 1;
     color: var(--highlight-color);
-    text-shadow: var(--shadow-color) 0 0 1.5em;
+    /* text-shadow: var(--shadow-color) 0 0 1.5em; */
 }
-
+.collapsed {
+    opacity: var(--opacity-collapsed);
+}
 
 
 img {
