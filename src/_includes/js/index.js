@@ -288,28 +288,24 @@ function onFilterChange(input) {
 }
 
 
-// // BASIC SEARCH
-// const searchInput = document.querySelector("#search-input");
-// searchInput.addEventListener('keyup', searchFunction);
-// function searchFunction() {
-//   // Declare variables
-//   var input, filter, ul, li, a, i, txtValue;
-//   input = document.getElementById('search-input');
-//   filter = input.value.toUpperCase();
-//   ul = document.getElementById("list");
-//   li = ul.getElementsByTagName('li');
 
-//   // Loop through all list items, and hide those who don't match the search query
-//   for (i = 0; i < li.length; i++) {
-//     title = li[i].getElementsByTagName("h2")[0];
-//     txtValue = title.innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       li[i].style.display = "";
-//     } else {
-//       li[i].style.display = "none";
-//     }
-//   }
-// }
+
+// SIMPLE SEARCH
+const searchInput = document.querySelector("#search-input");
+searchInput.addEventListener('keyup', searchFunction);
+function searchFunction() {
+    let input = searchInput.value
+    input=input.toLowerCase();
+    let x = document.querySelectorAll('.list-entry');
+    for (i = 0; i < x.length; i++) { 
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+          x[i].style.display="list-item";                 
+      }
+  }
+}
 
 
 /**
@@ -318,7 +314,7 @@ function onFilterChange(input) {
 function onDocumentReady() {
   el.heading = document.querySelector('.match-count');
   el.filters = document.querySelector('.filters');
-  el.filtersList = el.filters.querySelectorAll('input');
+  el.filtersList = el.filters.querySelectorAll('input[type="checkbox"]');
   el.list = document.querySelector('ul#list');
   el.items = el.list.querySelectorAll('li.list-entry');
 
