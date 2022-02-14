@@ -5,9 +5,9 @@
     <main>
 		{{ content | safe }}
 	</main>
-    {% include "partials/footer.njk" %}
+    {# {% include "partials/footer.njk" %} #}
     {% set js %}
-        {% include "js/index.js" %}
+        {% include "js/stefankarrer-net.js" %}
     {% endset %}
     <script defer>
         {{ js | jsmin | safe }}

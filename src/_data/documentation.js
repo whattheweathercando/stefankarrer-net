@@ -35,6 +35,15 @@ module.exports = () => {
                 type: record.get('type'),
                 website: record.get('website'),
                 featured: record.get('featured'),
+                linkedShows: record.get('linked-events'),
+                linkedShowTitles: record.get('title (from linked-events)'),
+                linkedShowSlugs: record.get('slug (from linked-events)'),
+                linkedWorks: record.get('linked-works'),
+                linkedWorksTitles: record.get('title (from linked-works)'),
+                linkedWorksSlugs: record.get('slug (from linked-works)'),
+                linkedSongs: record.get('linked-songs'),
+                linkedSongsIds: record.get('id (from linked-songs)'),
+                linkedSongsTitles: record.get('Title (from linked-songs)')
               });
             });
             fetchNextPage();

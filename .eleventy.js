@@ -41,6 +41,7 @@ module.exports = function (eleventyConfig) {
 
     // Layout alias
     eleventyConfig.addLayoutAlias('base', 'layouts/base.njk');
+    eleventyConfig.addLayoutAlias('subpage', 'layouts/subpage.njk');
     eleventyConfig.addLayoutAlias('index', 'layouts/index.njk');
 
     // extract year from date

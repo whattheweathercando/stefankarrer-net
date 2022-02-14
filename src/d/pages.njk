@@ -1,9 +1,11 @@
 ---
-layout: base
+layout: subpage
+tags: subpage
 pagination:
-    data: all
+    data: documentation
     size: 1
     alias: item
+    addAllPagesToCollections: true
 permalink: "/d/{{ item.slug }}/"
 ---
 {# permalink: "/d/{{ item.title | slug }}/" #}
@@ -47,3 +49,27 @@ permalink: "/d/{{ item.slug }}/"
 {% if item.body %}
     <div class="body-text">{{ item.body | nl2br | markdown | safe }}</div>
 {% endif %} 
+
+
+
+{% if item.linkedShows %}
+    Shows:<br>
+    {% for show in item.linkedShowSlugs %}
+        <a href="/d/{{show}}">{{item.linkedShowTitles[loop.index0]}}</a><br>
+    {% endfor %}
+    <br>
+{% endif %}
+{% if item.linkedWorks %}
+    Works:<br>
+    {% for workSlug in item.linkedWorksSlugs %}
+        <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a><br>
+    {% endfor %}
+{% endif %}
+{% if item.linkedSongs %}
+    Playlist:<br>
+    {% for songSlug in item.linkedSongsIds %}
+        <a href="/d/{{songSlug}}">{{item.linkedSongsTitles[loop.index0]}}</a><br>
+    {% endfor %}
+{% endif %}
+
+
