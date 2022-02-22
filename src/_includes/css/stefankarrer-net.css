@@ -204,9 +204,16 @@ li:not(#now) h2 {
 }
 blockquote {
     font-style: italic;
+    font-size: 16px;
+    font-family: Verdana, Arial, sans-serif;
 }
 
-
+#news {
+    margin-top: 2rem;
+}
+/* #news span {
+    background-color: lime;
+} */
 img, audio, video {
     /* margin: var(--main-padding) 0; */
     margin: 2rem 0 var(--main-padding) 0;
@@ -219,13 +226,13 @@ h1, h2, h3, h4 {
 }
 
 
-a {
-    /* text-decoration: underline gray 1px;
-    color: inherit; */
+/* a {
+    text-decoration: underline gray 1px;
+    color: inherit;
 }
 .lead-text a {
     word-break: break-all;
-}
+} */
 .external-link, .internal-link {
     display: inline-block;
     margin-top: 1em;
