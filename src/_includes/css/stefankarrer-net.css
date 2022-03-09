@@ -219,11 +219,11 @@ img, audio, video {
     margin: 2rem 0 var(--main-padding) 0;
 }
 
-
+/* 
 h1, h2, h3, h4 {
-    /* font-size: var(--font-size-base); */
-    /* font-weight: 700; */
-}
+    font-size: var(--font-size-base);
+    font-weight: 700;
+} */
 
 
 /* a {
