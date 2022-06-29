@@ -7,14 +7,12 @@ async function imageShortcode(src, alt, sizes, loading, aspectClass) {
     let metadata = await Image(src, {
         outputDir: "./dist/img/",
         urlPath: "/img/",
-        widths: [600, 1200, 1800],
+        widths: [800, 1600],
         formats: ["webp", "jpeg"],
         cacheOptions: {
-            // if a remote image URL, this is the amount of time before it fetches a fresh copy
-            duration: "3d",
-            // project-relative path to the cache directory
+            duration: "1d",
             directory: ".cache",
-            removeUrlQueryParams: false,
+            removeUrlQueryParams: true,
         },
     });
     

@@ -15,27 +15,31 @@ title: "Homepage stefankarrer.net"
     </li>
 </ul>
 
-<div id="news">
-    Upcoming:<br> 
-    <a href="https://www.rencontres-arles.com/fr/expositions/view/1051/chants-du-ciel" target="_blank" rel="noopener">Songs of the Sky, Les Rencontres d'Arles</a>
-    <br>
-    July 4 - September 25, 2022
-    <br><br>
-    <a href="https://screenwalks.com/" target="_blank" rel="noopener">Screen Walks</a>
-    <br>
-    September 21, 2022<br>
-    19:00 CET
-    <!-- <br>
-    Screen Walks is a series of online streams with artists and researchers using the screen as their medium. A collaboration between <a href="https://thephotographersgallery.org.uk/" target="_blank" rel="noopener">The Photographers’ Gallery</a> in London, UK and <a href="https://www.fotomuseum.ch/en/screen-walk/" target="_blank" rel="noopener">Fotomuseum Winterthur</a>, Switzerland.
-     -->
-    <br><br>
-    Recent: <br>
-    <a href="https://ausstellungsraum.ch/veranstaltungen/idiot-change-of-wind/" target="_blank" rel="noopener">Idiot Wind of Change</a>
-    <br>
-    Ausstellungsraum Klingental, Basel <br>
-    April 29, 2022, 20:00
+<div id="current">
+    {% for item in documentation %}
+        {% if item.featured == true %}
+            <div class="current-section">
+                <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title}}</a><br>
+                {% if item.location %}{{ item.location }}<br>{% endif %}
+                {% if item.lead %}<div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>{% endif %}
+                {% for file in item.linkedFiles %}
+                    {% set i = loop.index0 %}
+                    {% if item.onStartpage[i] %}
+                        {% if file.width >= file.height %}
+                            {% set aspectClass = "landscape" %}
+                        {% else %}
+                            {% set aspectClass = "portrait" %}
+                        {% endif %}
+                        {% set imgLoading = "lazy" %}
+                        {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
 </div>
-{% for item in twistedThumb %}
+
+<!-- {% for item in twistedThumb %}
     {% set file = item.images[0] %}
     {% if file.width >= file.height %}
         {% set aspectClass = "landscape" %}
@@ -53,4 +57,4 @@ title: "Homepage stefankarrer.net"
                 {% endif %}
             </figcaption>
         </figure>
-{% endfor %}
+{% endfor %} -->
