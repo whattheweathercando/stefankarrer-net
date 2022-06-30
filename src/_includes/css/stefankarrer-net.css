@@ -1,7 +1,7 @@
 
 /* CSS Variables */
 :root {
-    --font-size-base: 150%;
+    --font-size-base: 19px;
     /* --font-size-base: 1.4vw; */
     --font-size-small: 0.75rem;
     --font-size-large: 2rem;
