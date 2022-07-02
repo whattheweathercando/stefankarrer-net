@@ -53,14 +53,14 @@ permalink: "/d/{{ item.slug }}/"
 
 
 {% if item.linkedShows %}
-    Shows:<br>
+    Related shows:<br>
     {% for show in item.linkedShowSlugs %}
         <a href="/d/{{show}}">{{item.linkedShowTitles[loop.index0]}}</a><br>
     {% endfor %}
     <br>
 {% endif %}
 {% if item.linkedWorks %}
-    Works:<br>
+    Related works:<br>
     {% for workSlug in item.linkedWorksSlugs %}
         <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a><br>
     {% endfor %}
