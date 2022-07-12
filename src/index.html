@@ -34,6 +34,11 @@ title: "Homepage stefankarrer.net"
                         {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
                     {% endif %}
                 {% endfor %}
+                {% if item.linkedWorks %}
+                    {% for workSlug in item.linkedWorksSlugs %}
+                        <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a><br>
+                    {% endfor %}
+                {% endif %}
             </div>
         {% endif %}
     {% endfor %}
