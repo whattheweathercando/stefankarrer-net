@@ -38,6 +38,7 @@ module.exports = () => {
                 linkedShows: record.get('linked-events'),
                 linkedShowTitles: record.get('title (from linked-events)'),
                 linkedShowSlugs: record.get('slug (from linked-events)'),
+                showLinkedWorks: record.get('show-linked-works'),
                 linkedWorks: record.get('linked-works'),
                 linkedWorksTitles: record.get('title (from linked-works)'),
                 linkedWorksSlugs: record.get('slug (from linked-works)'),

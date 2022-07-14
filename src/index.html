@@ -34,7 +34,7 @@ title: "Homepage stefankarrer.net"
                         {% image file.url, item.title, "100vw", imgLoading, aspectClass %}
                     {% endif %}
                 {% endfor %}
-                {% if item.linkedWorks %}
+                {% if item.showLinkedWorks %}
                     {% for workSlug in item.linkedWorksSlugs %}
                         <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a><br>
                     {% endfor %}
@@ -44,7 +44,7 @@ title: "Homepage stefankarrer.net"
     {% endfor %}
 </div>
 
-<!-- {% for item in twistedThumb %}
+{% for item in twistedThumb %}
     {% set file = item.images[0] %}
     {% if file.width >= file.height %}
         {% set aspectClass = "landscape" %}
@@ -62,4 +62,4 @@ title: "Homepage stefankarrer.net"
                 {% endif %}
             </figcaption>
         </figure>
-{% endfor %} -->
+{% endfor %}
