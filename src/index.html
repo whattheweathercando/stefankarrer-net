@@ -19,7 +19,7 @@ title: "Homepage stefankarrer.net"
     {% for item in documentation %}
         {% if item.featured == true %}
             <div class="current-section">
-                <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title}}</a><br>
+                <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title}}{% if item.externallink %} &#x2197;{% endif %}</a><br>
                 {% if item.location %}{{ item.location }}<br>{% endif %}
                 {% if item.lead %}<div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>{% endif %}
                 {% for file in item.linkedFiles %}
