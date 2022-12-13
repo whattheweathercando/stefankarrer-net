@@ -9,8 +9,11 @@ async function imageShortcode(src, alt, sizes, loading, aspectClass) {
         urlPath: "/img/",
         widths: [800, 1600],
         formats: ["webp", "jpeg"],
+        sharpOptions: {
+            animated: true
+        },
         cacheOptions: {
-            duration: "1d",
+            duration: "3d",
             directory: ".cache",
             removeUrlQueryParams: true,
         },

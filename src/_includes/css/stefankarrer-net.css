@@ -205,7 +205,7 @@ li:not(#now) h2 {
 blockquote {
     font-style: italic;
     font-size: 16px;
-    font-family: Verdana, Arial, sans-serif;
+    /* font-family: Verdana, Arial, sans-serif; */
 }
 
 #current {
@@ -286,8 +286,16 @@ img.portrait {
     width: auto;
 }
 img.gif {
+    width: 100%;
     max-width: 600px;
     height: auto; 
+}
+.breaking-stick {
+    width: 100%;
+    max-width: 300px;
+    height: auto; 
+    /* margin: auto; */
+    cursor: pointer;
 }
 .full-size {
     cursor: zoom-out;
