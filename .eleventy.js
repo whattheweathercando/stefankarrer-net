@@ -38,7 +38,7 @@ module.exports = function (eleventyConfig) {
 
     // Passthrough copy
     eleventyConfig.addPassthroughCopy('concreteplatform');
-    eleventyConfig.addPassthroughCopy('src/404.html');
+    //eleventyConfig.addPassthroughCopy('src/404.html');
 
     // Layout alias
     eleventyConfig.addLayoutAlias('base', 'layouts/base.njk');
