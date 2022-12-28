@@ -15,6 +15,41 @@ title: "Homepage stefankarrer.net"
     </li>
 </ul>
 
+{% for item in twistedThumb %}
+    {% set file = item.images[0] %}
+    {% if file.type == "image/gif" %}
+        <figure class="twisted-thumb">
+            {% image file.url, file.filename, "100vw", imgLoading, "breaking-stick" %}
+            <figcaption class="caption">
+                <blockquote>{{item.caption | nl2br | markdown | safe }}</blockquote>
+                {% if item.info %}
+                <br>
+                {{item.info}}
+                {% endif %}
+            </figcaption>
+        </figure>
+    {% else  %}
+        
+        {% if file.width >= file.height %}
+            {% set aspectClass = "landscape" %}
+        {% else %}
+            {% set aspectClass = "portrait" %}
+        {% endif %}
+        {% set imgLoading = "lazy" %}
+        <figure class="twisted-thumb">
+            {% image file.url, item.name, "100vw", imgLoading, aspectClass %}
+            <figcaption class="caption">
+                <blockquote>{{item.caption}}</blockquote>
+                {% if item.info %}
+                <br>
+                {{item.info}}
+                {% endif %}
+            </figcaption>
+        </figure>
+        {% endif  %}
+{% endfor %}
+
+
 <div id="current">
     {% for item in documentation %}
         {% if item.featured == true %}
@@ -44,36 +79,3 @@ title: "Homepage stefankarrer.net"
     {% endfor %}
 </div>
 
-{% for item in twistedThumb %}
-    {% set file = item.images[0] %}
-    {% if file.type == "image/gif" %}
-        <figure class="twisted-thumb">
-            <figcaption class="caption">
-                <blockquote>{{item.caption | nl2br | markdown | safe }}</blockquote>
-                {% if item.info %}
-                <br>
-                {{item.info}}
-                {% endif %}
-            </figcaption>
-            {% image file.url, file.filename, "100vw", imgLoading, "breaking-stick" %}
-        </figure>
-    {% else  %}
-        
-        {% if file.width >= file.height %}
-            {% set aspectClass = "landscape" %}
-        {% else %}
-            {% set aspectClass = "portrait" %}
-        {% endif %}
-        {% set imgLoading = "lazy" %}
-        <figure class="twisted-thumb">
-            {% image file.url, item.name, "100vw", imgLoading, aspectClass %}
-            <figcaption class="caption">
-                <blockquote>{{item.caption}}</blockquote>
-                {% if item.info %}
-                <br>
-                {{item.info}}
-                {% endif %}
-            </figcaption>
-        </figure>
-        {% endif  %}
-{% endfor %}
