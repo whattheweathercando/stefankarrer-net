@@ -19,7 +19,7 @@ title: "Homepage stefankarrer.net"
     {% set file = item.images[0] %}
     {% if file.type == "image/gif" %}
         <figure class="twisted-thumb">
-            {% image file.url, file.filename, "100vw", imgLoading, "breaking-stick" %}
+            {% image file.url, file.filename, "100vw", imgLoading, "gif" %}
             <figcaption class="caption">
                 <blockquote>{{item.caption | nl2br | markdown | safe }}</blockquote>
                 {% if item.info %}
