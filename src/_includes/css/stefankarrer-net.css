@@ -208,6 +208,11 @@ blockquote {
     /* font-family: Verdana, Arial, sans-serif; */
 }
 
+mark {
+    background-color: black;
+    color: white;
+}
+
 #current {
     margin-top: 2rem;
 }
