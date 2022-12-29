@@ -11,7 +11,7 @@ title: "Homepage stefankarrer.net"
         <a href="/d/shows/">SHOWS</a>
     </li>
     <li>
-        <a href="mailto:mail@stefankarrer.net">mail[at]stefankarrer.net</a>
+        <a href="mailto:mail@stefankarrer.net">mail@stefankarrer.net</a>
     </li>
 </ul>
 
@@ -19,14 +19,14 @@ title: "Homepage stefankarrer.net"
     {% set file = item.images[0] %}
     {% if file.type == "image/gif" %}
         <figure class="twisted-thumb">
-            {% image file.url, file.filename, "100vw", imgLoading, "gif" %}
-            <!-- <figcaption class="caption">
+            <figcaption class="caption">
                 <blockquote>{{item.caption | nl2br | markdown | safe }}</blockquote>
                 {% if item.info %}
                 <br>
                 {{item.info}}
                 {% endif %}
-            </figcaption> -->
+            </figcaption>
+            {% image file.url, file.filename, "100vw", imgLoading, "gif" %}
         </figure>
     {% else  %}
         
