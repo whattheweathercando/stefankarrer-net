@@ -15,7 +15,8 @@
     --main-padding: 1rem;
     --main-margin: 4rem;
     --opacity-collapsed: 0.5; /* 50% opacity */
-    --nice-green: #459031;
+    --green: #459031;
+    --light-green: #D1E9C8;
 }
 
 @media screen and (max-width: 768px) {
@@ -210,8 +211,7 @@ blockquote {
 }
 
 mark {
-    background-color: black;
-    color: white;
+    background-color: var(--light-green);
 }
 
 #current {
@@ -291,13 +291,23 @@ img.portrait {
     max-height: calc(100vh - var(--footer-height));
     width: auto;
 }
+
 .gif {
     width: 100%;
-    max-width: 300px;
+    /* max-width: 300px; */
     height: auto;
-    /* margin: auto; */
     cursor: pointer;
 }
+/* .snap-branch {} */
+.twisted-thumb {
+    max-width: 300px;
+    margin: auto;
+}
+.twisted-thumb .caption {
+    padding-left: 3rem;
+    font-size: var(--font-size-small);
+}
+
 
 .full-size {
     cursor: zoom-out;

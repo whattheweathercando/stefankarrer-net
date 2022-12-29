@@ -10,7 +10,7 @@ for (var i = 0; i < links.length; i++) {
 }
 
 // images full height on click
-const images = document.querySelectorAll("img:not(.gif)");
+const images = document.querySelectorAll("img:not(.snap-branch)");
 images.forEach(el => {
   el.addEventListener('click', function(e) {
     el.classList.toggle("full-size");
