@@ -8,7 +8,7 @@ title: "works page stefankarrer.net"
     {% set listIndex = loop.index %}
         {% if item.website == true %}
                 <li class="list-entry" id="{{ item.slug }}" data-id="{{ item.slug }}" data-type="{{ item.type }}" data-startdate="{{ item.startdate | timestamp }}" data-enddate="{% if item.enddate %}{{ item.enddate | timestamp }}{% else %}{{ item.startdate | timestamp }}{% endif %}">  
-                    <a class="internal-link" href="/d/{{ item.slug | url }}">{{ item.title }}{% if item.location %}<span class="title-comma">&comma;&nbsp;</span>{{ item.location }}{% endif %}</a>    
+                    <a class="internal-link" href="/d/{{ item.slug | url }}">{{ item.title | safe }}{% if item.location | safe %}<span class="title-comma">&comma;&nbsp;</span>{{ item.location }}{% endif %}</a>    
                 </li>
         {% endif %}
     {% endfor %}
