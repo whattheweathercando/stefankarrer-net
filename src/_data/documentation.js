@@ -23,6 +23,7 @@ module.exports = () => {
                 showInternalLink: record.get('show-internal-link'),
                 externallink: record.get('external-link'),
                 lead: record.get('lead-text'),
+                embedCode: record.get('embed-code'),
                 body: record.get('body-text'),
                 linkedFiles: record.get('linked-files'),
                 linkedCaptions: record.get('linked-captions'),

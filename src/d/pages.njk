@@ -18,6 +18,10 @@ permalink: "/d/{{ item.slug }}/"
     {% endif %}
 </div>
 
+{% if item.embedCode %}
+    <div class="embed-media sixteen-ten">{{ item.embedCode | safe }}</div>
+{% endif %} 
+
 {% for file in item.linkedFiles %}
     {% if "video" in file.type %}
         <video width="768" height="auto" controls controlsList="nodownload" poster="">
