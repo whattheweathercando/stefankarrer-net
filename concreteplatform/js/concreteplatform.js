@@ -44,7 +44,7 @@ function populateIndex(){
 		li.addEventListener('click', function(event) {
 			i = index;
 			populateFields(i);
-			document.querySelector('#index-container').classList.toggle('visible');
+			document.querySelector('#index-container').classList.toggle('active');
 		})
 	})
 }
@@ -142,7 +142,7 @@ document.onkeydown = function(e) {
 
 document.querySelector('#button-show-index').addEventListener('click', function(event){
 	this.classList.toggle('underline');
-	document.querySelector('#index-container').classList.toggle("visible");
+	document.querySelector('#index-container').classList.toggle("active");
 })
 
 document.querySelector('#button-sort-year').addEventListener('click', function(event){
