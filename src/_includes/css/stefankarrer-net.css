@@ -297,7 +297,7 @@ img.portrait {
 /* .snap-branch {} */
 .twisted-thumb {
     max-width: 300px;
-    margin: auto;
+    /* margin: auto; */
 }
 .twisted-thumb .caption {
     padding-left: 3rem;
