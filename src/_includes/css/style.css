@@ -1,18 +1,18 @@
 
 /* CSS Variables */
 :root {
-    --font-size-base: 19px;
+    --font-size-base: 20px;
     /* --font-size-base: 1.4vw; */
     --font-size-small: 0.75rem;
-    --font-size-large: 2rem;
+    --font-size-large: 1.6rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
-    --font-family-monospace: "Fira Mono", "Roboto Mono", Menlo, monospace;
+    --font-family-monospace: "Fira Code", "Roboto Mono", Menlo, monospace;
     --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-family-sans-2: Verdana, "Open Sans", sans-serif;
     --font-family-serif: "Times New Roman", Times, serif;
     --body-max-width: 950px;
     --break-point: 950px;
-    --footer-height: 6em;
+    --footer-height: 3rem;
     --main-padding: 2rem;
     --main-margin: 4rem;
     --opacity-collapsed: 0.5; /* 50% opacity */
@@ -34,17 +34,10 @@
 body {  
     --bg-color: white;
     --text-color: black;
-    /* --text-color: rgb(30, 30, 30); */
-    --highlight-color: black;
-    --shadow-color: tan;
-    --border-color: #ccc;
 }
 body.dark-mode {
     --bg-color: rgb(15, 15, 15);
     --text-color: #dadada;
-    --highlight-color: white;
-    --shadow-color: none;
-    --border-color: rgb(45, 45, 45);
 }
 /* @media (prefers-color-scheme: dark) {
     body {
@@ -70,7 +63,7 @@ body {
     max-width: var(--body-max-width);
     margin: auto;
     /* margin: 0 var(--main-margin); */
-    font-family: var(--font-family-monospace);
+    font-family: var(--font-family-serif);
     /* letter-spacing: 0.0125em; */
     /* hyphens: auto; */
     /* word-break: break-all; */
@@ -78,14 +71,14 @@ body {
     background: var(--bg-color); 
 }
 
-/* body, header, footer {
-    margin: 0 var(--main-margin);
-} */
+
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;
+    height: var(--footer-height);
+    font-family: var(--font-family-monospace);
     background-color: inherit;
 }
 footer div {
@@ -125,13 +118,17 @@ textarea:focus, input#search-input:focus{
     }
 }
 
-main {
-    min-height: 100vh;
-    /* max-width: var(--body-max-width); */
-    margin-bottom: calc(var(--main-margin) + var(--footer-height));
+header {
     padding: var(--main-padding);
 }
-
+main {
+    min-height: 100vh;
+    padding: 0 var(--main-padding);
+    margin-bottom: var(--footer-height);
+}
+.subpage main {
+    padding: var(--main-padding);
+}
 
 
 /* LIST  */
@@ -181,9 +178,9 @@ li:not(#now) h2 {
 } */
 
 .title {
+    padding: var(--main-padding) 0;
+    font-size: var(--font-size-large);
     hyphens: auto;
-    margin: 0 0 var(--main-padding) 0;
-    /* display: block; */
 }
 
 .info {
@@ -234,20 +231,23 @@ img, audio, video, .embed-media {
     margin: var(--main-padding) 0;
 }
 
-/* 
-h1, h2, h3, h4 {
+
+h1, h2, ul li {
+    font-family: var(--font-family-monospace);
     font-size: var(--font-size-base);
-    font-weight: 700;
-} */
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
 
 a {
-    /* text-decoration-color: blue; */
-    /* text-decoration-thickness: 0.075em; */
-    text-underline-offset: 1.5px;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 0.08em;
     text-decoration-skip-ink: auto;
   }
-/* a:visited {} */
+a:visited {
+    color: blue;
+}
 /* a:focus, a:hover {
     background-color: blue;
 } */

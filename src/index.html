@@ -2,58 +2,35 @@
 layout: index
 title: "Homepage stefankarrer.net"
 ---
+<header>
+    <ul id="index-list">
+        <li>
+            <a href="/d/shows/">SHOWS</a>
+        </li>
+        <li>
+            <a href="/d/works/">WORKS</a>
+        </li>
+        <li>
+            <a href="mailto:mail@stefankarrer.net">mail@stefankarrer.net</a>
+        </li>
+    </ul>
+</header>
 
-<ul id="index-list">
-    <li>
-        <a href="/d/works/">WORKS</a>
-    </li>
-    <li>
-        <a href="/d/shows/">SHOWS</a>
-    </li>
-    <li>
-        <a href="mailto:mail@stefankarrer.net">mail@stefankarrer.net</a>
-    </li>
-</ul>
+<main>
 
-{% for item in twistedThumb %}
-    {% set file = item.images[0] %}
-    {% if file.type == "image/gif" %}
-        <figure class="twisted-thumb">
-            {% image file.url, file.filename, "100vw", imgLoading, "gif snap-branch" %}
-            <!-- <figcaption class="caption">
-                <blockquote>{{item.caption | nl2br | markdown | safe }}</blockquote>
-                {% if item.info %}
-                <br>
-                {{item.info}}
-                {% endif %}
-            </figcaption> -->
-        </figure>
-    {% else  %}     
-        {% if file.width >= file.height %}
-            {% set aspectClass = "landscape" %}
-        {% else %}
-            {% set aspectClass = "portrait" %}
-        {% endif %}
-        {% set imgLoading = "lazy" %}
-        <figure class="twisted-thumb">
-            {% image file.url, item.name, "100vw", imgLoading, aspectClass %}
-            <figcaption class="caption">
-                <blockquote>{{item.caption}}</blockquote>
-                {% if item.info %}
-                <br>
-                {{item.info}}
-                {% endif %}
-            </figcaption>
-        </figure>
-        {% endif  %}
-{% endfor %}
+
+<div class="twisted-thumb">
+    <img src="/static/gif/aA3NjN-X-ezgif-3-f848d5bfe8.gif" alt="snap!">
+</div>
 
 
 <div id="current">
     {% for item in documentation %}
         {% if item.featured == true %}
             <div class="current-section">
-                <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title | safe }}{% if item.externallink %} &#x2197;{% endif %}</a><br>
+                <h2>
+                    <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title | safe }}{% if item.externallink %} &#x2197;{% endif %}</a>
+                </h2>
                 {% if item.location %}{{ item.location | safe }}<br>{% endif %}
                 {% if item.lead %}<div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>{% endif %}
                 {% for file in item.linkedFiles %}
@@ -70,11 +47,14 @@ title: "Homepage stefankarrer.net"
                 {% endfor %}
                 {% if item.showLinkedWorks %}
                     {% for workSlug in item.linkedWorksSlugs %}
-                        <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a><br>
+                        <h2>
+                            <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a>
+                        </h2>
+                        
                     {% endfor %}
                 {% endif %}
             </div>
         {% endif %}
     {% endfor %}
 </div>
-
+</main>

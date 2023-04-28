@@ -7,8 +7,8 @@ async function imageShortcode(src, alt, sizes, loading, aspectClass) {
     let metadata = await Image(src, {
         outputDir: "./dist/img/",
         urlPath: "/img/",
-        widths: [800, 1600],
-        formats: ["webp", "jpeg"],
+        widths: [1600],
+        formats: ["jpeg"],
         sharpOptions: {
             animated: true
         },
@@ -38,6 +38,7 @@ module.exports = function (eleventyConfig) {
 
     // Passthrough copy
     eleventyConfig.addPassthroughCopy('concreteplatform');
+    eleventyConfig.addPassthroughCopy('src/static');
     //eleventyConfig.addPassthroughCopy('src/404.html');
 
     // Layout alias

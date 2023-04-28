@@ -2,9 +2,7 @@
 <html lang="en">
 {% include "partials/head.njk" %}
 <body>
-    <main>
-		{{ content | safe }}
-	</main>
+	{{ content | safe }}
     {# {% include "partials/footer.njk" %} #}
     {% set js %}
         {% include "js/stefankarrer-net.js" %}
