@@ -244,7 +244,7 @@ a {
     text-underline-offset: 2px;
     text-decoration-thickness: 0.08em;
     text-decoration-skip-ink: auto;
-  }
+}
 a:visited {
     color: blue;
 }
