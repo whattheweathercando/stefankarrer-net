@@ -1,10 +1,10 @@
 
 /* CSS Variables */
 :root {
-    --font-size-base: 20px;
+    --font-size-base: 18px;
     /* --font-size-base: 1.4vw; */
     --font-size-small: 0.75rem;
-    --font-size-large: 1.6rem;
+    --font-size-large: 1.25rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
     --font-family-monospace: "Fira Code", "Roboto Mono", Menlo, monospace;
     --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -63,12 +63,14 @@ body {
     max-width: var(--body-max-width);
     margin: auto;
     /* margin: 0 var(--main-margin); */
-    font-family: var(--font-family-serif);
+    font-family: var(--font-family-monospace);
+    line-height: 1.25;
     /* letter-spacing: 0.0125em; */
     /* hyphens: auto; */
     /* word-break: break-all; */
     color: var(--text-color);
     background: var(--bg-color); 
+
 }
 
 
@@ -233,10 +235,11 @@ img, audio, video, .embed-media {
 
 
 h1, h2, ul li {
-    font-family: var(--font-family-monospace);
-    font-size: var(--font-size-base);
+    /* font-family: var(--font-family-monospace); */
+    font-size: var(--font-size-large);
     font-weight: bold;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    padding: 0.25em 0;
 }
 
 
