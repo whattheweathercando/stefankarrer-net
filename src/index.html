@@ -19,9 +19,16 @@ title: "Homepage stefankarrer.net"
 <main>
 
 
-<div class="twisted-thumb">
-    <img src="/static/gif/aA3NjN-X-ezgif-3-f848d5bfe8.gif" alt="snap!">
+<div id="www-txt">
+    <a href="">www</a>
+    <!-- <audio src="/static/audio/Funk.aiff"></audio> -->
 </div>
+
+<!-- <div id="www">
+    <img src="/static/img/www.png" alt="www">
+</div> -->
+
+
 
 
 <div id="current">
@@ -47,9 +54,9 @@ title: "Homepage stefankarrer.net"
                 {% endfor %}
                 {% if item.showLinkedWorks %}
                     {% for workSlug in item.linkedWorksSlugs %}
-                        <h2>
+                        
                             <a href="/d/{{workSlug}}">{{item.linkedWorksTitles[loop.index0]}}</a>
-                        </h2>
+                    
                         
                     {% endfor %}
                 {% endif %}
@@ -57,4 +64,11 @@ title: "Homepage stefankarrer.net"
         {% endif %}
     {% endfor %}
 </div>
+
+
+
+<div id="snap-branch" class="twisted-thumb">
+    <img src="/static/gif/aA3NjN-X-ezgif-3-f848d5bfe8.gif" alt="snap!">
+</div>
+
 </main>
