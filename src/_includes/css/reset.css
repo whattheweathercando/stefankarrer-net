@@ -35,7 +35,11 @@ dd {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+  /* text-rendering: optimizeSpeed; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
   line-height: 1.4;
 }
 

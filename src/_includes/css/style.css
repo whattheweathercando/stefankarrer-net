@@ -1,20 +1,20 @@
 @font-face {
-    font-family: 'FiraCode';
+    font-family: 'Fira Code';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-display: auto;
     src: 
         local("Fira Code"), 
-        url('/static/fonts/FiraCode-Regular.woff') format('woff'),
+        /* url('/static/fonts/FiraCode-Regular.woff') format('woff'), */
         url('/static/fonts/FiraCode-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'FiraCode';
+    font-family: 'Fira Code';
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-display: auto;
     src: 
-        /* local("Fira Code"),  */
+        local("Fira Code"), 
         url('/static/fonts/FiraCode-Bold.ttf') format('truetype');
 }
 
@@ -26,19 +26,19 @@
     --font-size-small: 0.75rem;
     --font-size-large: 1.25rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
-    --font-family-monospace: "FiraCode", monospace;
-    --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-family-sans-2: Verdana, "Open Sans", sans-serif;
-    --font-family-serif: "Times New Roman", Times, serif;
+    --font-family-monospace: "Fira Code", "Roboto Mono", Menlo, monospace;
+    /* --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    --font-family-sans-2: "Noto Sans", sans-serif;
+    /* --font-family-serif: "Times New Roman", Times, serif; */
     --body-max-width: 950px;
     --break-point: 950px;
     --footer-height: 3rem;
     --main-padding: 2rem;
     --main-margin: 4rem;
-    --opacity-collapsed: 0.5; /* 50% opacity */
+    /* --opacity-collapsed: 0.5; 
     --nice-green: #459031;
     --light-green: #D1E9C8;
-    --disney-google-blue: #B1E2F4;
+    --disney-google-blue: #B1E2F4; */
 }
 
 @media screen and (max-width: 950px) {
@@ -84,6 +84,7 @@ body {
     margin: auto;
     /* margin: 0 var(--main-margin); */
     font-family: var(--font-family-monospace);
+    font-weight: 400;
     line-height: 1.35;
     /* letter-spacing: 0.0125em; */
     /* hyphens: auto; */
@@ -257,7 +258,7 @@ img, audio, video, .embed-media {
 h1, h2 {
     /* font-family: var(--font-family-monospace); */
     font-size: var(--font-size-large);
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 0.25em 0;
 }
@@ -268,9 +269,9 @@ a {
     text-decoration-thickness: 0.08em;
     text-decoration-skip-ink: auto;
 }
-/* a:visited {
+a:visited {
     color: blue;
-} */
+}
 a:focus, a:hover, h2 a:hover {
     text-decoration: underline;
     text-underline-offset: 2px;
@@ -290,9 +291,11 @@ label input {
 
 
 #www-txt a {
+    font-family: "Fira Code";
     text-decoration: none;
     font-size: 40vw;
     cursor: pointer;
+    font-variant-ligatures: contextual;
 }
 #www audio {
     display: none;
