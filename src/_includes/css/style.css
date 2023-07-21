@@ -26,7 +26,7 @@
     --font-size-small: 0.75rem;
     --font-size-large: 1.5rem;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Arial, "Helvetica Neue", sans-serif;
-    --font-family-monospace: "FiraCode", "Fira Code", "Roboto Mono", Menlo, monospace;
+    --font-family-monospace: "Roboto Mono", Menlo, monospace;
     /* --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     /* --font-family-sans-2: "Noto Sans", sans-serif; */
     --font-family-serif: "Times New Roman", Times, serif;
@@ -83,7 +83,7 @@ body {
     max-width: var(--body-max-width);
     margin: auto;
     /* margin: 0 var(--main-margin); */
-   font-family: var(--font-family-serif);
+    font-family: var(--font-family-monospace);
     font-weight: 400;
     line-height: 1.35;
     /* letter-spacing: 0.0125em; */
@@ -101,7 +101,7 @@ footer {
     bottom: 0;
     width: 100vw;
     height: var(--footer-height);
-    font-family: var(--font-family-monospace);
+    /* font-family: var(--font-family-monospace); */
     background-color: inherit;
 }
 footer div {
@@ -290,15 +290,23 @@ label input {
 
 
 #www-txt a {
-    font-family: "FiraCode";
+    font-family: "FiraCode", "Fira Code", monospace;
     text-decoration: none;
-    font-size: 40vw;
+    font-size: 38vw;
     cursor: pointer;
     font-variant-ligatures: contextual;
+    margin-left: -3rem;
 }
 #www audio {
     display: none;
 }
+@media screen and (max-width: 950px) {
+#www-txt a {
+    font-size: 50vw;
+    margin-left: -1rem;
+}
+}
+
 
 button:hover, label:hover {
     cursor: pointer;
