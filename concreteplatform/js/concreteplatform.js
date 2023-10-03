@@ -81,7 +81,7 @@ async function initPlatform() {
 	let promises = await Promise.all([promiseFrame, promiseData]);
 	let textFrame = promises[0];
 	platformData = promises[1];
-	// console.log(platformData);
+	console.log(platformData);
 	sortByYear();
 	document.querySelector('#platform-container').innerHTML = textFrame;
 	populateFields(i);
