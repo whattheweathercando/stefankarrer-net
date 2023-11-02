@@ -4,11 +4,13 @@
 <body>
 	{{ content | safe }}
     {# {% include "partials/footer.njk" %} #}
-    {% set js %}
+    {# {% set js %}
         {% include "js/stefankarrer-net.js" %}
     {% endset %}
     <script defer>
         {{ js | jsmin | safe }}
-    </script>
+    </script> #}
+    <script src="assets/js/stefankarrer-net.js"></script>
+    <script src="assets/js/www.js"></script>
 </body>
 </html>

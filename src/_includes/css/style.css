@@ -5,8 +5,8 @@
     font-display: auto;
     src: 
         local("Fira Code"), 
-        url('/static/fonts/FiraCode-Regular.woff') format('woff'),
-        url('/static/fonts/FiraCode-Regular.ttf') format('truetype');
+        url('/assets/fonts/FiraCode-Regular.woff') format('woff'),
+        url('/assets/fonts/FiraCode-Regular.ttf') format('truetype');
 }
 /* @font-face {
     font-family: 'FiraCodeBold';
@@ -15,7 +15,7 @@
     font-display: auto;
     src: 
         local("Fira Code"), 
-        url('/static/fonts/FiraCode-Bold.ttf') format('truetype');
+        url('/assets/fonts/FiraCode-Bold.ttf') format('truetype');
 } */
 
 
@@ -289,19 +289,19 @@ label input {
 }
 
 
-#www-txt a {
+#www-a {
     font-family: "FiraCode", "Fira Code", monospace;
     text-decoration: none;
-    font-size: 38vw;
+    font-size: 36vw;
     cursor: pointer;
     font-variant-ligatures: contextual;
     margin-left: -3rem;
 }
-#www audio {
+.www-audio {
     display: none;
 }
 @media screen and (max-width: 950px) {
-#www-txt a {
+#www-a {
     font-size: 50vw;
     margin-left: -1rem;
 }
