@@ -10,11 +10,12 @@
 		{% include "snippets/back-home.njk" %}
         </div>
 	</footer>
-	{% set js %}
+	{# {% set js %}
         {% include "assets/js/stefankarrer-net.js" %}
     {% endset %}
     <script defer>
         {{ js | jsmin | safe }}
-    </script>
+    </script> #}
+    <script src="assets/js/stefankarrer-net.js"></script>
 </body>
 </html>
