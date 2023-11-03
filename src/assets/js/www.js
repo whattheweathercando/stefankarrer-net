@@ -11,7 +11,7 @@ if (navigator.userAgent.indexOf('Mac') != -1) OS = 'MacOS';
 if (navigator.userAgent.indexOf('Linux') != -1) OS = 'Linux';
 if (navigator.userAgent.indexOf('Android') != -1) OS = 'Android';
 if (navigator.userAgent.indexOf('like Mac') != -1) OS = 'iOS';
-console.log(OS);
+//console.log(OS);
 //console.log(navigator.userAgent);
 
 
@@ -20,14 +20,14 @@ console.log(OS);
 wwwLink.addEventListener("click", function(event){
     event.preventDefault();
     wwwLink.style.color = "red";
-    if (OS == ( "MacOS" | "iOS")) {
+    if (OS == ( "MacOS" || "iOS")) {
         wwwAudioMacOS.play();
-    } else if (OS == ("Windows" | "Android")){
+    } else if (OS == ("Windows" || "Android")){
         wwwAudioWindows.play();
     } 
     // to do : detect os first, then load audio file , then click eventlistener, then on end color red
 })
 
-wwwLink.addEventListener("mouseout", (event) => {
-    wwwLink.style.color = "SaddleBrown";
-});
+// wwwLink.addEventListener("mouseout", (event) => {
+//     wwwLink.style.color = "Blue";
+// });
