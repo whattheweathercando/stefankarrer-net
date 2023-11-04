@@ -3,6 +3,7 @@
 const wwwLink = document.querySelector("#www-a");
 const wwwAudioMacOS = document.querySelector("#err-macos");
 const wwwAudioWindows = document.querySelector("#err-windows");
+const wwwAudioQuack = document.querySelector("#quack");
 
 
 let OS = 'Unknown';
@@ -20,11 +21,12 @@ if (navigator.userAgent.indexOf('like Mac') != -1) OS = 'iOS';
 wwwLink.addEventListener("click", function(event){
     event.preventDefault();
     wwwLink.style.color = "red";
-    if (OS == ( "MacOS" || "iOS")) {
-        wwwAudioMacOS.play();
-    } else if (OS == ("Windows" || "Android")){
-        wwwAudioWindows.play();
-    } 
+    wwwAudioQuack.play();
+    // if (OS == ( "MacOS" || "iOS")) {
+    //     wwwAudioMacOS.play();
+    // } else if (OS == ("Windows" || "Android")){
+    //     wwwAudioWindows.play();
+    // } 
     // to do : detect os first, then load audio file , then click eventlistener, then on end color red
 })
 
