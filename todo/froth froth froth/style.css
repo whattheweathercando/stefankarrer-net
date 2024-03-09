@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --light-green: #D1E9C8;
+    --nice-green: #459031;
+    --disney-google-blue: #B1E2F4;
+}
+body {
+    width: 50vw;
+    min-height: 100vh;
+    margin: auto;
+    font-family: "Courier Prime", monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    background-color: black;
+    color: white;
+}
+.text-container {
+    padding: 4rem 0;
+}
+span {
+    opacity: 0;
+}
+span.show {
+    opacity: 1;
+}
+
+mark {
+    background-color: var(--light-green);
+}
