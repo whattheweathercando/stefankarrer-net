@@ -1,0 +1,34 @@
+{
+    "title": "Δ",
+    "bodyfile": "body",
+    "variables": [
+        {
+            "var1": "forest", "var2": "woods", "x": 1
+        },
+        {
+            "var1": "river", "var2": "creek", "x": 1
+        },
+        {
+            "var1": "crow", "var2": "raven", "x": 1
+        },
+        {
+            "var1": "lonely", "var2": "lonesome", "x": 1 
+        },
+        { 
+            "var1": "highway", "var2": "freeway", "x": 3 
+        },
+        { 
+            "var1": "highway", "var2": "freeway", "x": 3 
+        },
+        { 
+            "var1": "highway", "var2": "freeway", "x": 3 
+        }
+    ],
+    "textframe": [
+        "there",
+        "lies",
+        "the difference between",
+        "and"
+    ],
+    "structure": ["txtframe[0]", "txtframe[1]", "txt-variable[i][A]", "txtframe[2]", "txt-variable[i][B]"]
+}
