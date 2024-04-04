@@ -6,7 +6,7 @@ dist
 # concreteplatform
 
 # Text notes / log
-*.txt 
+#*.txt 
 
 # Visual Studio Code workspace #
 ######################

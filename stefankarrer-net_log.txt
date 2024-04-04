@@ -1,0 +1,377 @@
+
+* * *
+
+stefankarrer.net
+Rebuild, July 2021
+
+Airtable data
+11ty static site
+Netlify 
+
+templating language
+liquid ? 
+nunjucks
+
+
+* * * 
+
+11ty.dev
+https://github.com/11ty/eleventy-base-blog
+
+
+mkdir stefankarrer-net
+
+* * *
+
+npm init -y
+
+* * *
+
+install 11ty locally
+npm install --save-dev @11ty/eleventy
+
+* * *
+
+Test run 11ty
+npx @11ty/eleventy
+
+OK, (v0.12.1)
+
+* * * 
+
+Git 
+add .gitignore
+git init
+
+* * *
+
+install minifier
+npm install clean-css
+npm install terser
+
+* * * 
+
+Scripts
+package.json 
+npx ?
+
+
+* * * 
+
+directory structure, src, dist, ...
+
+* * *
+.eleventy.js
+
+* * *
+
+Get data from Airtable 
+
+base id : 
+api key : 
+https://airtable.com/appGTsdQhNkWGIICH/api/docs
+
+
+resources
+https://danabyerly.com/articles/using-airtable-with-eleventy/
+https://github.com/plloyd11/eat/blob/main/src/_data/cats.js
+
+*
+install official JavaScript client
+npm install airtable
+
+*
+install dotenv
+for API Key, Authentification
+
+npm install dotenv
+
+*
+_data/all.js
+
+
+* 
+
+generate pages from data
+
+*
+
+11ty image plugin
+install
+npm install @11ty/eleventy-img
+
+https://www.11ty.dev/docs/plugins/image/#use-this-in-your-templates
+
+.eleventy.js
+
+
+* * * 
+
+sync to github repo
+
+created repo stefankarrer-net
+
+https://github.com/whattheweathercando/stefankarrer-net.git
+
+git add, git commit
+
+git remote add origin https://github.com/whattheweathercando/stefankarrer-net.git
+git branch -M main
+git push -u origin main
+
+OK :)
+
+
+*
+remove .cache folder
+
+git rm -r --cached directory
+git rm -r --cached .cache
+
+git add, commit, push
+
+OK :)
+
+Test git pull, README
+
+OK :)
+
+
+* * * 
+
+FILTER
+multi filter data attributes
+
+https://jimfrenette.com/javascript/multi-filter-js/
+
+https://jimfrenette.com/demo/multi-filter/
+
+
+* * * 
+
+Deploy on Netlify
+
+https://github.com/whattheweathercando/stefankarrer-net
+branch to deploy : main
+
+base directory : /
+build command : npm run build
+publish directory : dist
+
+Add key variable
+KEY 
+
+OK :)
+
+build time : 2 min 30 s
+
+
+* * * 
+
+Trigger Netlify Build on Airtable
+
+
+Netlify build hook  -> airtable (button)
+https://docs.netlify.com/configure-builds/build-hooks/
+
+
+Netlify will give you a unique URL for that build hook. To trigger this hook, you need to send a POST request to that URL.
+
+Build hook
+airtable-trigger
+https://api.netlify.com/build_hooks/6196d571d4897e225ff72f1f
+
+
+Airtable Scripting
+https://www.airtable.com/developers/scripting/api/fetch
+
+
+Trigger webhook, post request script
+
+let url = "https://api.netlify.com/build_hooks/6196d571d4897e225ff72f1f";
+let response = await fetch(url, {method: 'POST'});
+
+
+OK :)
+
+
+
+* * * 
+
+Cache in netlify build
+
+11ty Cache Plugin
+https://www.11ty.dev/docs/plugins/cache/
+
+If you’re attempting to use this plugin on a service like Netlify and you are definitely not checking in your .cache folder to git, 
+note that the cache will be empty with every build and new requests will go out. 
+It’s important to be aware of this, even if it’s what you want for your production build!
+
+
+
+* * * 
+
+Airtable rich text markup
+| nl2br | markdown | safe 
+
+OK :)
+
+* * * 
+
+DARK MODE
+
+auto detect user preference
+
+toggle button
+
+
+* * *
+
+Deploy Status Badge
+
+https://api.netlify.com/api/v1/badges/3d31e8af-a87c-4dda-b44f-a473972333aa/deploy-status
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3d31e8af-a87c-4dda-b44f-a473972333aa/deploy-status)](https://app.netlify.com/sites/stefankarrer-net/deploys)
+
+
+* * *
+
+Image captions
+->
+seperate table for images / all media files 
+    with attachment, caption fields
+-> link to images
+https://community.airtable.com/t/referencing-crediting-an-image-source/34081/2
+
+
+* * *
+
+Image sizes
+
+-> nunjucks template add different classes for landscape / portrait
+
+landscape : width 600px
+portrait : height 100vh - header-height
+
+onclick add class full-width
+
+
+* * * 
+
+subpages, add page.js
+
+* * *
+
+Concrete Platform V1
+add passthrough copy
+/concreteplatform/
+
+
+
+
+* * * 
+
+Publish
+to
+https://www.stefankarrer.net
+https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/
+
+DNS Settings easyname.ch
+
+www.subdomain 
+CNAME record
+www 
+stefankarrer-net.netlify.app
+
+Apex domain
+ALIAS record
+(@)
+apex-loadbalancer.netlify.com
+
+OK :)
+
+* * * 
+
+TODO
+
+Search 
+whole website
+https://gomakethings.com/how-to-create-a-vanilla-js-search-page-for-a-static-website/
+
+
+
+*
+cache / store
+light /dark mode settings
+-> 
+
+*
+
+? cache / store scroll position on index page
+
+
+*
+symbol for 
+internal / external links 
+[->] - right arrow
+[/>] - upwards right arrow
+
+
+
+* * * 
+
+fira code www ligature not displaying 
+Chrome : add css font-variant-ligatures: contextual;
+Safari ->  remove /* text-rendering: optimizeSpeed; */
+
+
+API KEY 
+NEW ACCESS TOKEN
+11ty-build
+patFxKn6dIo2SUJtO.6e474ad754240df326a8fad6971464dbf1e04d12c0378aeec879688ae12fe6b1
+
+
+
+* * *
+
+TO DO : 
+
+
+
+11ty update ?
+
+
+11ty, build locally, upload static site
+
+
+
+
+
+* * * * * * 
+
+/*
+COLORS
+tan
+sandybrown
+lemonchiffon
+purple, #7c39ed; 
+green
+*/
+
+/*
+FONTS
+
+monospace
+"IBM Plex Mono"
+"Fira Code"
+
+sans
+Noto Sans
+Lato
+"Open Sans"
+
+*/
+
+
+
