@@ -246,7 +246,7 @@ blockquote {
     margin-top: 2rem;
 }
 .current-section {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 img, audio, video, .embed-media {
@@ -261,7 +261,9 @@ h1, h2, ul li {
     /* text-transform: uppercase; */
     /* padding: 0.25em 0; */
 }
-
+h2 {
+    padding-bottom: 0.5rem;
+}
 
 a {
     text-underline-offset: 0.125em;
