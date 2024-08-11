@@ -34,7 +34,7 @@ title: "Homepage stefankarrer.net"
         {% if item.featured == true %}
             <div class="current-section">
                 <h2>
-                    <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title | safe }}{% if item.externallink %} &#x2197;{% endif %}</a>
+                    <a href="{% if item.externallink %}{{item.externallink}}{% else %}/d/{{ item.slug | url }}{% endif %}" {% if item.externallink %} target="_blank" rel="noopener"{% endif %}>{{item.title | nl2br | safe }}{% if item.externallink %} &#x2197;{% endif %}</a>
                 </h2>
                 {% if item.location %}{{ item.location | safe }}<br>{% endif %}
                 {% if item.lead %}<div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>{% endif %}

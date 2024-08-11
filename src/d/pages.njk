@@ -10,7 +10,7 @@ permalink: "/d/{{ item.slug }}/"
 ---
 {# permalink: "/d/{{ item.title | slug }}/" #}
 
-<h1 class="title">{{ item.title }}{% if item.location %}, {{ item.location | safe }}{% endif %}</h1>
+<h1 class="title">{{ item.title | nl2br }}</h1>
 <div class="info-subpage">
     {% if item.lead %}
         <div class="lead-text">{{ item.lead | nl2br | markdown | safe }}</div>
