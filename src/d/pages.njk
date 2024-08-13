@@ -8,7 +8,8 @@ pagination:
     addAllPagesToCollections: true
 permalink: "/d/{{ item.slug }}/"
 ---
-{# permalink: "/d/{{ item.title | slug }}/" #}
+
+{% set slug = item.title | slug %}
 
 <h1 class="title">{{ item.title | nl2br }}</h1>
 <div class="info-subpage">
@@ -37,6 +38,9 @@ permalink: "/d/{{ item.slug }}/"
             {% set aspectClass = "portrait" %}
         {% endif %}
         {% set imgLoading = "lazy" %}
+        {% if slug == "downbound" %}
+            {% set aspectClass = "no-margin" %}
+        {% endif %}
         {% if "gif" in file.type %}
             <img class="gif" src="{{file.url}}" alt="{{item.title}}">
         {% else %}

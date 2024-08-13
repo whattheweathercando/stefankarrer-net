@@ -336,7 +336,9 @@ img.portrait {
     max-height: calc(100vh - var(--footer-height));
     width: auto;
 }
-
+.no-margin {
+    margin: 0;
+}
 .gif {
     width: 100%;
     /* max-width: 300px; */
@@ -418,4 +420,7 @@ video {
 
 #info {
     margin-bottom: 1rem;
+}
+.info-subpage {
+    margin-bottom: var(--main-padding);
 }
