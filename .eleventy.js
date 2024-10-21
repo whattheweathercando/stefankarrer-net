@@ -39,6 +39,7 @@ module.exports = function (eleventyConfig) {
     // Passthrough copy
     eleventyConfig.addPassthroughCopy('concreteplatform');
     eleventyConfig.addPassthroughCopy('to-do');
+    eleventyConfig.addPassthroughCopy('portfolio_latest.pdf');
     eleventyConfig.addPassthroughCopy('src/assets');
     //eleventyConfig.addPassthroughCopy('src/404.html');
 
